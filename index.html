@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(imgs/gro.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+            padding: 30px;
+            width: 50vw; /* 50% of viewport width */
+            max-width: 30%;
+            max-height: 30%;
+            text-align: center;
+            position: absolute; /* Absolute positioning to move it freely */
+            left: 5vw; /* Adjust left position from the viewport edge */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        select {
+            margin: 15px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid rgba(208, 225, 212, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            background: rgba(234, 245, 228, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border-color: rgba(168, 213, 186, 0.8);
+            background: rgba(234, 245, 228, 0.8);
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(46, 125, 50, 0.8));
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(45deg, rgba(46, 125, 50, 0.8), rgba(76, 175, 80, 0.8));
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn img {
+            margin-left: 10px;
+        }
+
+        .content-box {
+            display: none;
+            position: fixed;
+            top: 10%;
+            right: 5vw;
+            transform: translate(-50%, 0);
+            width: 80%;
+            max-width: 1000px;
+            height: 85%;
+            background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+            z-index: 1000;
+            overflow: auto;
+            padding: 30px;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .content-box.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .close-btn {
+            background: rgba(255, 111, 97, 0.8);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 74, 64, 0.8);
+        }
+
+        .content-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .headline {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .container, .content-box {
+                width: 95%;
+                max-width: none;
+            }
+        }
+        img.img-fluid {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    margin: 10px; /* Optional: Adds some space from the edges */
+    max-width: 120px; /* Optional: Sets a maximum width to ensure it doesn't occupy too much space */
+}
+    </style>
+</head>
+<body>
+    <img src="imgs/elGroIcon.png" class="img-fluid" alt="...">
+    <div class="container">
+        <select id="main-query">
+            <option value="">Select Main Query</option>
+            <option value="Technical issues">Technical issues</option>
+            <option value="Order-related issues">Order-related issues</option>
+        </select>
+
+        <select id="sub-query">
+            <option value="">Select Sub Query</option>
+        </select>
+
+        <button class="submit-btn" id="submit-btn">
+            Submit
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/submit-progress.png" alt="Submit Icon" width="30" height="30"/>
+        </button>
+    </div>
+
+    <div class="content-box" id="content-box">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <div id="content-text" class="content-text">
+            <!-- Placeholder for the content -->
+        </div>
+    </div>
+
+    <script>
+        const mainQuerySelect = document.getElementById('main-query');
+        const subQuerySelect = document.getElementById('sub-query');
+        const submitBtn = document.getElementById('submit-btn');
+        const contentBox = document.getElementById('content-box');
+        const contentText = document.getElementById('content-text');
+        const closeBtn = document.getElementById('close-btn');
+
+        const subqueries = {
+            'Technical issues': [
+                'How to Place an Order',
+                'How to Apply a Promo Code to Your Order',
+                'How to Pay for Your Order with Smiles Points',
+                'How to Find Your Order',
+                'How to Find Your Voucher',
+                'How to Redeem a Cash Voucher',
+                'How to Troubleshoot the App on iOS',
+                'How to Troubleshoot the App on Android',
+                'How to Link Your elGrocer App with Smiles App for Using Smiles Points'
+            ],
+            'Order-related issues': [
+                'Missing Item/Not Marked as OOS',
+                'Damaged item',
+                'Wrong Item/Wrong Item Description',
+                'Expiry-Issue Item',
+                'Late Delivery',
+                
+            ]
+        };
+
+        const stepsDetails = {
+            'Missing Item/Not Marked as OOS': `
+        <div class="headline">Addressing Missing Item Issues</div>
+        
+        <p><strong>Step 1: Greeting the Customer</strong></p>
+        <ul>
+            <li><strong>Smiles Market:</strong> “Welcome to Smiles Market.”</li>
+            <li><strong>ShopperApp_MarketPlace:</strong> “Welcome to elGrocer by Smiles.”</li>
+            <li><strong>Smiles_MarketPlace:</strong> “Welcome to Smiles Groceries.”</li>
+        </ul>
+        <p>Reassure the customer with one of the following:</p>
+        <ul>
+            <li>“I am checking the order right now, I appreciate your patience.”</li>
+            <li>“Kindly allow me a few minutes to check for you.”</li>
+        </ul>
+        
+        <p><strong>Step 2: Verifying the Order Details</strong></p>
+        <ul>
+            <li><strong>Access the Order Details:</strong></li>
+            <ul>
+                <li>Navigate to: DB > Orders > Order Details > Order Positions</li>
+            </ul>
+            <li><strong>Check if the Missing Item is Marked as Out of Stock (OOS):</strong></li>
+            <ul>
+                <li><strong>If marked OOS:</strong> Ensure the customer was not charged for it by comparing the billed amount with the amount captured from the customer.</li>
+                <li><strong>If not marked OOS:</strong> Review the receipt image: DB > Orders > Order Details > Receipt Image > Click here to view image.</li>
+            </ul>
+        </ul>
+        
+        <p><strong>Step 3: Resolving Missing Items</strong></p>
+        <ul>
+            <li><strong>Item Not on the Bill:</strong></li>
+            <ul>
+                <li>If the item is not listed on the bill:
+                    <ul>
+                        <li>Confirm the final bill amount and the amount charged to the customer.</li>
+                        <li>Refund the customer if the item was billed.</li>
+                        <li>If the item was not billed, inform the customer that the amount for the item was not captured, and only the amount for the received items was charged.</li>
+                    </ul>
+                </li>
+            </ul>
+            <li><strong>Item on the Bill but Not Received:</strong></li>
+            <ul>
+                <li>If the item is on the bill but not received, possible reasons include:
+                    <ul>
+                        <li>The driver not collecting the item from the store.</li>
+                        <li>The picker not handing it to the driver.</li>
+                    </ul>
+                </li>
+                <li>Actions:
+                    <ul>
+                        <li>Verify with the store via WhatsApp or call.</li>
+                        <li>Consult the Dispatch team on Slack to locate the item.</li>
+                        <li>If the item was missed by the picker:
+                            <ul>
+                                <li>Submit a Jotform for the missing item: <a href="[Jotform Link]" target="_blank">Jotform Link</a></li>
+                                <li>Arrange a driver to deliver the item based on the customer’s availability.</li>
+                            </ul>
+                        </li>
+                        <li>If the item was with the driver:
+                            <ul>
+                                <li>Request the Dispatch team to send the driver back to deliver the item.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </ul>
+        
+        <p><strong>Step 4: Escalation and Refund</strong></p>
+        <ul>
+            <li>If the Store Confirms the Item Was Sent and the Picker Confirms the Item is Not in the Car:</li>
+            <ul>
+                <li>Determine the Escalation Path Based on the Store Type:
+                    <ul>
+                        <li><strong>Dedicated Store:</strong> Contact the Logistics team.</li>
+                        <li><strong>Non-Dedicated Store:</strong> Contact Market Place.</li>
+                        <li><strong>Partial Dedicated:</strong> Contact both Logistics and Market Place.</li>
+                        <li><strong>Dark Store:</strong> Contact the Dark Store Team.</li>
+                        <li><strong>Smiles Fleet:</strong> Email logs.support@eateasily.com.</li>
+                    </ul>
+                </li>
+                <li>Refund the customer for the missing item, as it is not their fault.</li>
+            </ul>
+        </ul>
+        
+        <p><strong>Step 5: Customer Follow-Up</strong></p>
+        <ul>
+            <li>Keep the customer informed throughout the process to prevent communication gaps.</li>
+            <li>Provide updates as they become available.</li>
+            <li>Apologize for any inconvenience caused.</li>
+        </ul>
+    `,
+    'Wrong Item/Wrong Item Description': `
+        <div class="headline">Handling Wrong Item Issues</div>
+
+        <p><strong>Step 1: Greeting the Customer</strong></p>
+        <ul>
+            <li>Begin by offering a warm, market-specific greeting:
+                <ul>
+                    <li><strong>Smiles Market:</strong> “Welcome to Smiles Market.”</li>
+                    <li><strong>ShopperApp_MarketPlace:</strong> “Welcome to elGrocer by Smiles.”</li>
+                    <li><strong>Smiles_MarketPlace:</strong> “Welcome to Smiles Groceries.”</li>
+                </ul>
+            </li>
+            <li>Ask the customer to provide two photos:
+                <ul>
+                    <li>A photo of the item they received.</li>
+                    <li>A photo of the barcode on the item.</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p><strong>Step 2: Verifying the Item Details</strong></p>
+        <ul>
+            <li><strong>Access the Database:</strong></li>
+            <ul>
+                <li>Compare the barcode, photo, description, price, and size of the item the customer received with the item they ordered.</li>
+            </ul>
+            <li><strong>If the Barcode and Description Are Incorrect:</strong></li>
+            <ul>
+                <li>This indicates the customer received a completely different item.</li>
+                <li>Notify the catalogue team to update the item information.</li>
+            </ul>
+            <li><strong>If the Barcode and Description Match:</strong></li>
+            <ul>
+                <li>This suggests that the picker selected the wrong item.</li>
+                <li><strong>Tip:</strong> Keep the customer updated throughout the process.</li>
+            </ul>
+        </ul>
+        
+        <p><strong>Step 3: Refund Process</strong></p>
+        <ul>
+            <li><strong>If the Item's Value is Less Than 20 AED (Marketplace Stores):</strong></li>
+            <ul>
+                <li><strong>Dedicated Store:</strong> Our delivery/picker is responsible.</li>
+                <li><strong>Non-Dedicated Store:</strong> The store is responsible for delivery/picking.</li>
+                <li><strong>Partial Dedicated:</strong> Our delivery team handles delivery, but the store is responsible for picking.</li>
+                <li>You can directly refund the customer by raising a refund request.</li>
+            </ul>
+            <li><strong>If the Item's Value is Less Than 15 AED (Dark Stores):</strong></li>
+            <ul>
+                <li>For <strong>Smiles Market</strong> or <strong>Smiles Market Abu Dhabi</strong>, you can refund the customer directly by raising a refund request.</li>
+            </ul>
+        </ul>
+        
+        <p><strong>Step 4: Replacing or Returning the Wrong Item</strong></p>
+        <ul>
+            <li><strong>Check with the Store:</strong> Verify if the correct item is available.</li>
+            <li><strong>If the Correct Item is Available:</strong></li>
+            <ul>
+                <li>Apologize to the customer for the inconvenience.</li>
+                <li>Coordinate a time to send a driver with the replacement item.</li>
+            </ul>
+            <li><strong>If the Correct Item is Not Available:</strong></li>
+            <ul>
+                <li>Confirm with the store that the wrong item should be returned.</li>
+                <li>Arrange with the customer for a driver to pick up the item and return it to the store.</li>
+                <li>Inform the customer that they will be refunded once the item is returned.</li>
+                <li><strong>Tip:</strong> If the wrong item is a fresh product and will be replaced or returned, ask the customer to keep the item in the fridge until the issue is resolved.</li>
+            </ul>
+        </ul>
+    `,
+    'Late Delivery': `
+       <div class="headline">Handling Late Delivery: Addressing Customer Concerns</div>
+
+<p>When addressing customer inquiries about the status of their order, such as "Where’s my order?" "I can’t track my order," or "I didn’t receive my order," follow this structured approach:</p>
+
+<p><strong>1. Greeting the Customer</strong></p>
+<ul>
+    <li><strong>Smiles Market:</strong> “Welcome to Smiles Market.”</li>
+    <li><strong>ShopperApp_MarketPlace:</strong> “Welcome to elGrocer by Smiles.”</li>
+    <li><strong>Smiles_MarketPlace:</strong> “Welcome to Smiles Groceries.”</li>
+</ul>
+
+<p><strong>2. Identifying the Store Type and Delivery Method</strong></p>
+<ul>
+    <li><strong>Determine the Store Type and Responsibility:</strong>
+        <ul>
+            <li><strong>Dedicated Store:</strong> Our delivery/picker is responsible.</li>
+            <li><strong>Non-Dedicated Store:</strong> The store handles delivery/picking.</li>
+            <li><strong>Partial Dedicated:</strong> Our delivery team handles delivery; the store handles picking.</li>
+            <li><strong>Dark Store:</strong> Orders are processed through a specialized store.</li>
+            <li><strong>Smiles Fleet:</strong> Delivery is handled by our fleet.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>3. Checking the Order Status</strong></p>
+<ul>
+    <li><strong>Use the Appropriate Tool:</strong>
+        <ul>
+            <li><strong>Dedicated or Partial Dedicated Store:</strong> Check MP Locus Dashboard.</li>
+            <li><strong>Dark Store:</strong> Check DarkStore Locus Dashboard.</li>
+            <li><strong>Smiles Fleet:</strong> Check DB &gt; Analytics.</li>
+            <li><strong>Store’s Delivery:</strong> Contact the store directly via WhatsApp or phone call.</li>
+        </ul>
+    </li>
+    <li><strong>Tip:</strong> Keep the customer informed throughout this process to avoid communication gaps.</li>
+</ul>
+
+<p><strong>4. Evaluating the Delivery Slot</strong></p>
+<ul>
+    <li><strong>Check Delivery Slot Status:</strong>
+        <ul>
+            <li>Go to Dashboard &gt; Orders &gt; Delivery Slot to determine if the order is late or still within the expected timeframe.</li>
+            <li><strong>If Within the Delivery Slot:</strong>
+                <ul>
+                    <li>Apologize for any perceived delay and thank the customer for their patience.</li>
+                    <li>Provide an updated estimated time of arrival (ETA) and confirm the order is still within the delivery slot. Provide the driver’s details if available.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>5. Handling Late Orders (Exceeding the Delivery Slot)</strong></p>
+<ul>
+    <li><strong>For Dedicated or Partial Dedicated Stores:</strong>
+        <ul>
+            <li>Contact the Dispatch team via Slack to understand the reason for the delay.</li>
+            <li>Apologize to the customer and provide the updated ETA from Locus.</li>
+        </ul>
+    </li>
+    <li><strong>For Dark Stores:</strong>
+        <ul>
+            <li>Report the issue to the DarkStore Dispatch team via Slack.</li>
+            <li>Apologize and update the customer with the new ETA from Locus.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Note:</strong> If the delay is due to factors that cannot be resolved immediately (e.g., vehicle problems, weather conditions, or the order not being ready), consider rescheduling the delivery with the customer instead of canceling the order.</p>
+
+<p>This approach ensures effective communication and resolution of late delivery issues.</p>
+
+    `,
+    'How to Place an Order': `
+        <div class="headline">How to Place an Order</div>
+
+        <p><strong>Step 1: Register on the Application</strong></p>
+        <ul>
+            <li>Open the app and sign up using your UAE phone number.</li>
+        </ul>
+        
+        <p><strong>Step 2: Set Your Location</strong></p>
+        <ul>
+            <li>Select your location to view nearby stores available for delivery.</li>
+        </ul>
+        
+        <p><strong>Step 3: Choose a Store</strong></p>
+        <ul>
+            <li>Browse and select the store you want to shop from.</li>
+        </ul>
+        
+        <p><strong>Step 4: Add Items to Your Cart</strong></p>
+        <ul>
+            <li>Pick your desired products, ensuring that your total exceeds the minimum basket value.</li>
+        </ul>
+        
+        <p><strong>Step 5: Review Your Cart</strong></p>
+        <ul>
+            <li>Go to your cart to confirm the items you’ve selected.</li>
+        </ul>
+        
+        <p><strong>Step 6: Checkout Process</strong></p>
+        <ul>
+            <li>On the checkout page, you can:
+                <ul>
+                    <li>Confirm your delivery address.</li>
+                    <li>Select a delivery time slot.</li>
+                    <li>Add any special instructions for the delivery team.</li>
+                    <li>Choose your preferred payment method:
+                        <ul>
+                            <li><strong>Cash on Delivery</strong></li>
+                            <li><strong>Credit Card on Delivery</strong></li>
+                            <li><strong>Online Payment</strong></li>
+                            <li><strong>Tabby</strong></li>
+                            <li><strong>Smiles Points</strong></li>
+                            <li><strong>elWallet</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p><strong>Step 7: Apply a Promo Code</strong></p>
+        <ul>
+            <li>If you have a promo code, add it on the checkout page and make sure to apply it to your order.</li>
+        </ul>
+    `,
+    'How to Apply a Promo Code to Your Order':`
+    <div class="headline">How to Apply a Promo Code to Your Order</div>
+
+<p><strong>Step 1: Choose a Primary Payment Method</strong></p>
+<ul>
+    <li>On the checkout page, select one of the following payment methods:
+        <ul>
+            <li><strong>Cash on Delivery</strong></li>
+            <li><strong>Credit Card on Delivery</strong></li>
+            <li><strong>Online Payment</strong></li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 2: Enter Your Promo Code</strong></p>
+<ul>
+    <li>On the same checkout page, locate the box designated for adding a voucher or promo code.</li>
+    <li>Enter your promo code and click "Apply."</li>
+</ul>
+
+<p><strong>Step 3: Verify Promo Code Requirements</strong></p>
+<ul>
+    <li>Ensure that your order meets the minimum basket value required by the promo code.</li>
+    <li>Review the terms and conditions of the promo code before completing your purchase.</li>
+</ul> `,
+'How to Pay for Your Order with Smiles Points': `
+<div class="headline">How to Pay for Your Order with Smiles Points</div>
+
+<p><strong>Step 1: Select a Primary Payment Method</strong></p>
+<ul>
+    <li>On the checkout page, start by choosing one of the following payment methods:
+        <ul>
+            <li><strong>Cash on Delivery</strong></li>
+            <li><strong>Credit Card on Delivery</strong></li>
+            <li><strong>Online Payment</strong></li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 2: Choose to Use Smiles Points</strong></p>
+<ul>
+    <li>Look for the option to use Smiles Points on the checkout page and click on it.</li>
+</ul>
+
+<p><strong>Step 3: Adjust the Smiles Points Amount</strong></p>
+<ul>
+    <li>Slide the Smiles Points icon to determine the amount you want to pay using your Smiles Points.</li>
+</ul>
+`,
+'How to Find Your Order':`
+<div class="headline">How to Find Your Order</div>
+
+<p><strong>Step 1: Identify the Order's Market Type</strong></p>
+<ul>
+    <li>Determine whether the order is from a Marketplace or a Single Store.</li>
+</ul>
+
+<p><strong>Step 2: For Marketplace Orders (Groceries and Pharmacies)</strong></p>
+<ul>
+    <li>If the order was placed from Groceries or Pharmacies, guide the customer to:
+        <ul>
+            <li>Open the Smiles application.</li>
+            <li>Navigate to the Home Page.</li>
+            <li>Select <strong>"Groceries and More."</strong></li>
+            <li>Go to <strong>"Profile."</strong></li>
+            <li>Click on <strong>"Orders."</strong></li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 3: For Single Store Orders (Smiles Market)</strong></p>
+<ul>
+    <li>If the order was placed from Smiles Market, instruct the customer to:
+        <ul>
+            <li>Open the Smiles application.</li>
+            <li>Navigate to the Home Page.</li>
+            <li>Select <strong>"SmilesMarket."</strong></li>
+            <li>Go to <strong>"Profile."</strong></li>
+            <li>Click on <strong>"Orders."</strong></li>
+        </ul>
+    </li>
+</ul>
+
+`, 'How to Find Your Voucher': `
+<div class="headline">How to Find Your Voucher</div>
+
+<p><strong>Step 1: Navigate to the Home Page</strong></p>
+<ul>
+    <li>Open the app and go to the home page.</li>
+</ul>
+
+<p><strong>Step 2: Select “My Vouchers”</strong></p>
+<ul>
+    <li>Find and tap on the <strong>“My Vouchers”</strong> option.</li>
+</ul>
+
+<p><strong>Step 3: Choose the “Active” Tab</strong></p>
+<ul>
+    <li>Select the <strong>“Active”</strong> tab to view all your active vouchers.</li>
+</ul>
+
+<p>You’ll find all the active vouchers listed there.</p>
+`, 'How to Redeem a Cash Voucher':
+
+ `<div class="headline">How to Redeem a Cash Voucher</div>
+
+<p><strong>Step 1: Copy the Voucher Code</strong></p>
+<ul>
+    <li>Ensure you have the voucher code copied to your clipboard.</li>
+</ul>
+
+<p><strong>Step 2: Navigate to Smiles Homepage</strong></p>
+<ul>
+    <li>Go to the Smiles homepage and click on <strong>‘Smiles Market.’</strong></li>
+</ul>
+
+<p><strong>Step 3: Shop and Add Items to Your Cart</strong></p>
+<ul>
+    <li>Browse and shop for groceries from Smiles Market.</li>
+    <li>Add your selected items to your cart.</li>
+</ul>
+
+<p><strong>Step 4: Apply the Voucher Code</strong></p>
+<ul>
+    <li>Click on <strong>‘View Cart.’</strong></li>
+    <li>On the checkout screen, enter the voucher code in the <strong>‘Enter Promo Code’</strong> box.</li>
+    <li>Press <strong>‘Apply’</strong> to redeem the voucher.</li>
+</ul>
+`, 
+'How to Troubleshoot the App on iOS': `
+<div class="headline">How to Troubleshoot the App on iOS</div>
+
+<p><strong>Clearing the App Cache:</strong></p>
+
+<p><strong>Step 1: Open the Settings App</strong></p>
+<ul>
+    <li>Locate and tap on the <strong>Settings</strong> app on your iOS device.</li>
+</ul>
+
+<p><strong>Step 2: Access General Settings</strong></p>
+<ul>
+    <li>Tap <strong>General</strong> in the settings menu.</li>
+</ul>
+
+<p><strong>Step 3: Go to iPhone Storage</strong></p>
+<ul>
+    <li>Select <strong>iPhone Storage</strong> to view a list of installed apps.</li>
+</ul>
+
+<p><strong>Step 4: Select the App</strong></p>
+<ul>
+    <li>Scroll down and choose the app you want to troubleshoot from the list.</li>
+</ul>
+
+<p><strong>Step 5: Offload the App</strong></p>
+<ul>
+    <li>On the app’s page, tap <strong>Offload App</strong> to clear its cache.</li>
+    <li>Confirm your choice by tapping <strong>Offload App</strong> again when prompted.</li>
+</ul>
+
+<p>This process will free up space and remove temporary files associated with the app without deleting your data.</p>
+
+`,
+'How to Troubleshoot the App on Android': `
+<div class="headline">How to Troubleshoot the App on Android</div>
+
+<p><strong>Step 1: Open Device Settings</strong></p>
+<ul>
+    <li>Go to the <strong>Settings</strong> app on your Android device.</li>
+</ul>
+
+<p><strong>Step 2: Select Apps</strong></p>
+<ul>
+    <li>Tap on <strong>Apps</strong> or <strong>Applications</strong> to view the list of installed apps.</li>
+</ul>
+
+<p><strong>Step 3: Choose the App</strong></p>
+<ul>
+    <li>Find and tap on the app you want to troubleshoot.</li>
+</ul>
+
+<p><strong>Step 4: Access Storage Options</strong></p>
+<ul>
+    <li>Tap <strong>Storage</strong> to open the storage management options for the app.</li>
+</ul>
+
+<p><strong>Step 5: Clear Cache</strong></p>
+<ul>
+    <li>Tap <strong>Clear Cache</strong> to delete all cached data for the selected app.</li>
+</ul>
+
+<p><strong>Step 6: Repeat if Needed</strong></p>
+<ul>
+    <li>Repeat the process for other apps to continue clearing hidden app cache.</li>
+</ul>
+
+<p>This process helps resolve issues by removing temporary files and freeing up storage space.</p>
+
+`,
+'How to Link Your elGrocer App with Smiles App for Using Smiles Points': `
+<div class="headline">How to Link Your elGrocer App with Smiles App for Using Smiles Points</div>
+
+<p><strong>Step 1: Ensure Account Consistency</strong></p>
+<ul>
+    <li>Make sure you are using the same phone number for both your <strong>Smiles App</strong> and <strong>elGrocer App</strong> accounts.</li>
+</ul>
+
+<p><strong>Step 2: Open the elGrocer App</strong></p>
+<ul>
+    <li>When you open the <strong>elGrocer App</strong>, you will see the <strong>Earn & Redeem Login Banner</strong> on the home page if you have both accounts.</li>
+</ul>
+
+<p><strong>Step 3: Click the Banner</strong></p>
+<ul>
+    <li>Tap on the <strong>Earn & Redeem Login Banner</strong>. This action will direct you to a verification screen.</li>
+</ul>
+
+<p><strong>Step 4: Verify Your Account</strong></p>
+<ul>
+    <li>The system will recognize you as a Smiles account owner. You will receive an OTP (One-Time Password) message for verification.</li>
+</ul>
+
+<p><strong>Step 5: Complete Verification</strong></p>
+<ul>
+    <li>Enter the OTP you received and click <strong>Ok</strong>.</li>
+</ul>
+
+<p><strong>Step 6: Return to Home Screen</strong></p>
+<ul>
+    <li>Once verified and you return to the home screen, go to your profile to view your existing Smiles Points balance.</li>
+</ul>
+
+<p>By following these steps, your Smiles points will be linked to your elGrocer App account, allowing you to use your points for transactions.</p>
+
+`, 'Damaged item': `
+<div class="headline">Handling a Damaged Item</div>
+
+<p><strong>Step 1: Request Photo of the Damage</strong></p>
+<ul>
+    <li><strong>Ask the Customer to Share a Photo</strong>
+        <ul>
+            <li>Request a clear photo of the damaged item.</li>
+            <li>Emphasize the importance of including the expiry date and clearly showing the damage.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 2: Examine the Photo and Item Details</strong></p>
+<ul>
+    <li><strong>Request and Review Photo</strong>
+        <ul>
+            <li>Politely ask for a photo focusing on the damage and expiry date.</li>
+            <li>Assess the photo to determine the cause of the damage:
+                <ul>
+                    <li>Was it damaged at the store?</li>
+                    <li>Was the damage caused during delivery?</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Check Item Price</strong>
+        <ul>
+            <li>Verify the price of the damaged item:
+                <ul>
+                    <li><strong>Below 20 AED</strong> (15 AED for Smiles Market orders)</li>
+                    <li><strong>Above 20 AED</strong> (15 AED for Smiles Market orders)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 3: Assess Timing of the Complaint</strong></p>
+<ul>
+    <li><strong>Determine Complaint Timing</strong>
+        <ul>
+            <li>Was the complaint reported immediately?</li>
+            <li>Was it reported after a certain number of days?</li>
+            <li><strong>Important:</strong> For fresh/frozen items, escalation must be done within 2 hours maximum.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Next Steps:</strong></p>
+<ul>
+    <li><strong>For Items Priced Below 20 AED (15 AED for Smiles Market)</strong>
+        <ul>
+            <li><strong>Process Refund Directly:</strong>
+                <ul>
+                    <li>Refund the customer directly.</li>
+                    <li>Inform the specialized team responsible for the store:
+                        <ul>
+                            <li><strong>MarketPlace:</strong> For partial/non-dedicated stores</li>
+                            <li><strong>Logistics:</strong> For dedicated stores</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>For Items Priced Above 20 AED (15 AED for Smiles Market)</strong>
+        <ul>
+            <li><strong>Contact the Store:</strong>
+                <ul>
+                    <li>Inquire if the store accepts returns for the damaged item.</li>
+                    <li><strong>If the Store Accepts Returns:</strong>
+                        <ul>
+                            <li>Check if replacements are available.</li>
+                            <li><strong>If Replacements are Available:</strong>
+                                <ul>
+                                    <li>Arrange for a replacement for the customer.</li>
+                                    <li>Raise a JotForm to initiate the replacement process if the damage occurred during our delivery.</li>
+                                </ul>
+                            </li>
+                            <li><strong>If No Replacements are Available:</strong>
+                                <ul>
+                                    <li>Inform the store that the damaged item will be returned.</li>
+                                    <li>Raise a JotForm to initiate the return process if the damage occurred during our delivery.</li>
+                                    <li>After the return, raise a refund request for the customer.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>This process ensures proper handling of damaged items and efficient resolution for the customer.</p>
+
+`, 'Expiry-Issue Item': `<div class="headline">Handling Expiry-Issue Items</div>
+
+<p><strong>Step 1: Apologize for the Inconvenience</strong></p>
+<ul>
+    <li>Offer a sincere apology for any inconvenience caused by the expiry issue.</li>
+</ul>
+
+<p><strong>Step 2: Request a Picture of the Expiry Date</strong></p>
+<ul>
+    <li>Ask the customer to provide a clear photo of the item's expiration date.</li>
+</ul>
+
+<p><strong>Step 3: Assess the Expiry Date</strong></p>
+<ul>
+    <li><strong>If the Item is Near Expiry:</strong>
+        <ul>
+            <li><strong>More than 2 Weeks from Expiry (for Smiles Market):</strong>
+                <ul>
+                    <li>This is considered an invalid case.</li>
+                    <li>Inform the customer that no further action will be taken.</li>
+                </ul>
+            </li>
+            <li><strong>Less than 2 Weeks from Expiry:</strong>
+                <ul>
+                    <li><strong>Check Pricing:</strong>
+                        <ul>
+                            <li><strong>Less than AED 15 (for Smiles Market):</strong>
+                                <ul>
+                                    <li>Refund the customer and inform the store.</li>
+                                </ul>
+                            </li>
+                            <li><strong>More than AED 15 (for Smiles Market):</strong>
+                                <ul>
+                                    <li>Raise a reverse logistics request for the Smiles Market.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Less than AED 20 (for other stores):</strong>
+                                <ul>
+                                    <li>Refund the customer and inform the store.</li>
+                                </ul>
+                            </li>
+                            <li><strong>More than AED 15 (for other stores):</strong>
+                                <ul>
+                                    <li>Raise a replacement/return request using JotForm.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>If the Item is Expired:</strong>
+        <ul>
+            <li><strong>Less than AED 15 (for Smiles Market):</strong>
+                <ul>
+                    <li>Refund the customer and inform the store.</li>
+                </ul>
+            </li>
+            <li><strong>More than AED 15 (for Smiles Market):</strong>
+                <ul>
+                    <li>Raise a reverse logistics request for the Smiles Market.</li>
+                </ul>
+            </li>
+            <li><strong>Less than AED 20 (for other stores):</strong>
+                <ul>
+                    <li>Refund the customer and inform the store.</li>
+                </ul>
+            </li>
+            <li><strong>More than AED 15 (for other stores):</strong>
+                <ul>
+                    <li>Raise a replacement/return request using JotForm.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>This procedure ensures appropriate actions are taken based on the expiry status and pricing of the item.</p>
+`
+
+};
+
+        mainQuerySelect.addEventListener('change', function() {
+            const mainQuery = mainQuerySelect.value;
+            const options = subqueries[mainQuery] || [];
+            subQuerySelect.innerHTML = '<option value="">Select Sub Query</option>';
+            options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                subQuerySelect.appendChild(opt);
+            });
+        });
+
+        submitBtn.addEventListener('click', function() {
+            const mainQuery = mainQuerySelect.value;
+            const subQuery = subQuerySelect.value;
+            if (mainQuery && subQuery) {
+                const content = stepsDetails[subQuery] || 'Content not available for the selected subquery.';
+                contentText.innerHTML = content;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                contentBox.classList.add('show');
+                document.querySelector('.container').style.transform = 'scale(0.9)'; // Shrink the container
+                document.querySelector('.container').style.zIndex = '0'; // Send container behind the content box
+            } else {
+                alert('Please select both Main Query and Sub Query.');
+            }
+        });
+
+        closeBtn.addEventListener('click', function() {
+            contentBox.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.querySelector('.container').style.transform = 'scale(1)'; // Restore original size
+            document.querySelector('.container').style.zIndex = '1'; // Bring container back on top
+        });
+    </script>
+</body>
+</html>
