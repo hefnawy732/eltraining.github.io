@@ -308,7 +308,7 @@ img.img-fluid {
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    left: 19%;
+    left: 17%;
 }
 
 .suggestion-item {
@@ -321,6 +321,141 @@ img.img-fluid {
     background-color: #007bff;
     color: #fff;
 }
+.container,
+.select,
+.submit-btn,
+.img-fluid,
+.gif-content img,
+.img1 img,
+.img2 img,
+.imgs1 img,
+.imgs2 img,
+.close-btn {
+    transition: all 0.3s ease;
+}
+.img1 img {
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.img2 img {
+    animation: fadeInUp 0.8s ease-out 0.4s;
+}
+
+.imgs1 img {
+    animation: fadeInUp 0.8s ease-out 0.6s;
+}
+
+.imgs2 img {
+    animation: fadeInUp 0.8s ease-out 0.8s;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.close-btn:hover {
+    animation: bounce 1s;
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.content-box.show {
+    animation: slideIn 0.5s ease forwards;
+}
+@keyframes imageHover {
+    from {
+        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    to {
+        transform: scale(1.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.gif-content img,
+.img1 img,
+.img2 img,
+.imgs1 img,
+.imgs2 img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gif-content img:hover,
+.img1 img:hover,
+.img2 img:hover,
+.imgs1 img:hover,
+.imgs2 img:hover {
+    animation: imageHover 0.3s forwards;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeInUp 0.8s ease-out;
+}
+@keyframes scaleFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container {
+    animation: scaleFadeIn 0.8s ease-out;
+}
+.container:hover {
+    transform: scale(1.05); /* Slightly increased for more impact */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container {
+    animation: bounceIn 1s ease-out;
+}
+
     </style>
 </head>
 <body>
@@ -1525,3 +1660,4 @@ img.img-fluid {
     </script>
 </body>
 </html>
+
