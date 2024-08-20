@@ -455,6 +455,47 @@ img.img-fluid {
 .container {
     animation: bounceIn 1s ease-out;
 }
+.gif-content {
+    position: relative;
+    display: inline-block;
+}
+
+.gif-content img {
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    z-index: 1; /* Ensure it's below the overlay */
+}
+
+.gif-content:hover img {
+    position: fixed; /* Fixed positioning for fullscreen effect */
+    top: 10%;
+    left: 0;
+    width: 60vw; /* Full viewport width */
+    height: 60vh; /* Full viewport height */
+    object-fit: contain; /* Maintain aspect ratio */
+    z-index: 2; /* Ensure it's above the overlay */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.gif-content::after {
+    content: "";
+    position: fixed; /* Fixed positioning for overlay */
+    top: 0;
+    left: 0;
+    width: 90vw;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: none; /* Initially hidden */
+    z-index: 1; /* Below the image */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.gif-content:hover::after {
+    display: block; /* Show the overlay on hover */
+}
 
     </style>
 </head>
