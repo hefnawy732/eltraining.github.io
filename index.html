@@ -3,171 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Query Form</title>
+    <title>elTraining</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url(imgs/gro.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+       body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(imgs/gro.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .container {
-            background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
-            padding: 30px;
-            width: 50vw; /* 50% of viewport width */
-            max-width: 30%;
-            max-height: 30%;
-            text-align: center;
-            position: absolute; /* Absolute positioning to move it freely */
-            left: 5vw; /* Adjust left position from the viewport edge */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.container {
+    background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+    padding: 30px;
+    width: 50vw; /* 50% of viewport width */
+    max-width: 30%;
+    max-height: 30%;
+    text-align: center;
+    position: absolute; /* Absolute positioning to move it freely */
+    left: 5vw; /* Adjust left position from the viewport edge */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .container:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
+.container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
 
-        select {
-            margin: 15px 0;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid rgba(208, 225, 212, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            background: rgba(234, 245, 228, 0.5);
-            transition: all 0.3s ease;
-        }
+select {
+    margin: 15px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(208, 225, 212, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background: rgba(234, 245, 228, 0.5);
+    transition: all 0.3s ease;
+}
 
-        select:focus {
-            outline: none;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            border-color: rgba(168, 213, 186, 0.8);
-            background: rgba(234, 245, 228, 0.8);
-        }
+select:focus {
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(168, 213, 186, 0.8);
+    background: rgba(234, 245, 228, 0.8);
+}
 
-        .submit-btn {
-            padding: 12px 25px;
-            background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(46, 125, 50, 0.8));
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
+.submit-btn {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(46, 125, 50, 0.8));
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
 
-        .submit-btn:hover {
-            background: linear-gradient(45deg, rgba(46, 125, 50, 0.8), rgba(76, 175, 80, 0.8));
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.submit-btn:hover {
+    background: linear-gradient(45deg, rgba(46, 125, 50, 0.8), rgba(76, 175, 80, 0.8));
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-        .submit-btn img {
-            margin-left: 10px;
-        }
+.submit-btn img {
+    margin-left: 10px;
+}
 
-        .content-box {
-            display: none;
-            position: fixed;
-            top: 4vw;
-            right: 5vw;
-            transform: translate(-50%, 0);
-            width: 50%;
-            max-width: 850px;
-            height: 85%;
-            background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
-            z-index: 1000;
-            overflow: auto;
-            padding: 30px;
-            box-sizing: border-box;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            transform: scale(0.8);
-        }
+.content-box {
+    display: none;
+    position: fixed;
+    top: 4vw;
+    right: 5vw;
+    transform: translate(-50%, 0);
+    width: 50%;
+    max-width: 850px;
+    height: 85%;
+    background: rgba(255, 255, 255, 0.8); /* 30% opacity white background */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+    z-index: 1000;
+    overflow: auto;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+}
 
-        .content-box.show {
-            display: block;
-            opacity: 1;
-            transform: scale(1);
-        }
+.content-box.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
 
-        .close-btn {
-            background: rgba(255, 111, 97, 0.8);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 22px;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 8px;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            transition: background 0.3s ease;
-        }
+.close-btn {
+    background: rgba(255, 111, 97, 0.8);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s ease;
+}
 
-        .close-btn:hover {
-            background: rgba(255, 74, 64, 0.8);
-        }
+.close-btn:hover {
+    background: rgba(255, 74, 64, 0.8);
+}
 
-        .content-text {
-            font-size: 16px;
-            line-height: 1.6;
-        }
+.content-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-        .headline {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.headline {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        /* Responsive design adjustments */
-        @media (max-width: 768px) {
-            .container, .content-box {
-                width: 95%;
-                max-width: none;
-            }
-        }
-        img.img-fluid {
+/* Responsive design adjustments */
+@media (max-width: 1200px) {
+    .container {
+        width: 60vw;
+        left: 2vw;
+    }
+
+    .content-box {
+        width: 70%;
+        right: 2vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 70vw;
+    }
+
+    .content-box {
+        width: 80%;
+        right: 2vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90vw;
+        left: 0;
+        right: 0;
+    }
+
+    .content-box {
+        width: 95%;
+        right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .close-btn {
+        font-size: 18px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .content-text {
+        font-size: 14px;
+    }
+
+    .headline {
+        font-size: 18px;
+    }
+
+    .search-container {
+        margin-bottom: 5px;
+    }
+
+    #search-bar {
+        width: calc(100% - 50px);
+        padding: 10px 30px 10px 10px;
+    }
+
+    .search-icon {
+        right: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .suggestions-list {
+        width: calc(100% - 50px);
+        left: 0;
+    }
+}
+
+img.img-fluid {
     position: absolute;
     top: 2vw;
     left: 2vw;
     margin: 10px; /* Optional: Adds some space from the edges */
     max-width: 120px; /* Optional: Sets a maximum width to ensure it doesn't occupy too much space */
 }
+
+.gif-content,
+.img1,
+.img2,
+.imgs1,
+.imgs2 {
+    flex-shrink: 0;
+    float: right;
+    border: 3px solid #fff;
+    border-radius: 5%;
+    margin-left: 15px;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gif-content img,
+.img1 img,
+.img2 img,
+.imgs1 img,
+.imgs2 img {
+    width: 200px;
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    .gif-content img,
+    .img1 img,
+    .img2 img,
+    .imgs1 img,
+    .imgs2 img {
+        width: 150px;
+        height: 225px;
+    }
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#search-bar {
+    width: 80%;
+    padding: 12px 40px 12px 12px;
+    border-radius: 20px;
+    border: 2px solid rgba(234, 245, 228, 1);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-bar:focus {
+    border-color: rgba(234, 245, 228, 1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}
+
+/* Suggestions List */
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #fff;
+    width: calc(100% - 250px);
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    left: 17%;
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.suggestion-item:hover {
+    background-color: #007bff;
+    color: #fff;
+}
     </style>
 </head>
 <body>
     <img src="imgs/elGroIcon.png" class="img-fluid" alt="...">
     <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search..." autocomplete="off">
+            <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Search Icon" class="search-icon"/>
+        </div>
+        <ul id="suggestions-list" class="suggestions-list"></ul>
         <select id="main-query">
             <option value="">Select Main Query</option>
             <option value="Technical issues">Technical issues</option>
             <option value="Order-related issues">Order-related issues</option>
+            <option value="Q&A">Q&A</option>
         </select>
 
         <select id="sub-query">
@@ -194,15 +362,17 @@
         const contentBox = document.getElementById('content-box');
         const contentText = document.getElementById('content-text');
         const closeBtn = document.getElementById('close-btn');
+        const searchBar = document.getElementById('search-bar');
+        const suggestionsList = document.getElementById('suggestions-list');
+
 
         const subqueries = {
             'Technical issues': [
                 'How to Place an Order',
-                'How to Apply a Promo Code to Your Order',
-                'How to Pay for Your Order with Smiles Points',
+                'How to Redeem a Cash Voucher to your Order',
+                'How to Redeem a Cash Voucher to your elWallet',
                 'How to Find Your Order',
                 'How to Find Your Voucher',
-                'How to Redeem a Cash Voucher',
                 'How to Troubleshoot the App on iOS',
                 'How to Troubleshoot the App on Android',
                 'How to Link Your elGrocer App with Smiles App for Using Smiles Points',
@@ -210,7 +380,8 @@
                 'Where Can I Find elWallet/Vouchers/Orders/Addresses?',
                 'Where Can I Find the Available Stores/Slots?',
                 'What Are the Available Payment Methods?',
-                'How to Choose the Delivery Slot/Add Note/Confirm Location?'
+                'How to Choose the Delivery Slot/Add Note/Confirm Location?',
+                'How to Pay for Your Order with Smiles Points'
             ],
             'Order-related issues': [
                 'Missing Item/Not Marked as OOS',
@@ -218,8 +389,61 @@
                 'Wrong Item/Wrong Item Description',
                 'Expiry-Issue Item',
                 'Late Delivery',
-                
-            ]
+                'Types of Stores',
+                'How to Identify Store Types'
+            ],
+            'Q&A': [
+'I placed an order and then edited it to add more items. I have been charged twice.',
+'When do I have to pay the Tabby payment?',
+'I just placed an order have I been charged 1 AED?',
+'Can both primary and linked accounts login to elGrocer app?',
+'How can I redeem my points on Smiles? Or is the balance on Smiles and elGrocer equivalent? Or If I pay with my Smiles points on elGrocer will my balance on Smiles app decrease?',
+'When I pay with my Smiles Points will I still earn points?',
+'If I will use a promo code? How will the Smiles points be calculated?',
+'What is the promo’s validity?',
+'Do my points expire?',
+'Can I track my orders?',
+'How do I get started?',
+'How much can I spend with Tabby?',
+'Where can I find all my account info?',
+'Will I receive points for purchases I made prior to creating my rewards account?',
+'Can I schedule my delivery to be sent later/day?',
+'Will I be able to use Smiles points that I had in my Smiles wallet previously?',
+'I want to cancel my order can you please refund my payment?',
+'I redeemed points with my last purchase but now I want to return them. What will happen to my reward? Or if payment failed? Or in the case of substitution?',
+'Can you pay a 200AED bill with 200 Smiles points that you earned buying 200 AED on elGrocer?',
+'Is Tabby free to use?',
+'If I have a Business Mobile Number OR a Visitor Line Number OR a SWYP Number OR a Du Number OR an International Number OR any other type can I still earn and redeem smiles points using elGrocer app?',
+'How are my points determined?',
+'How do I cancel my order?',
+'What is Tabby?',
+'Can I repeat the same order as the one previously placed?',
+'How can I redeem a promo code?',
+'How can I redeem my points at checkout?',
+'Can I have multiple delivery addresses?',
+'How long does it take to activate my Tabby account?',
+'Where can I use elGrocer?',
+'Is there a maximum number of attempts to enter the correct OTP?',
+'How can I use Tabby?',
+'I received an update about my order mentioning that some items are not available.',
+'Can I use Tabby for smiles market & retailers?',
+'How do I sign up?',
+'What is the Happy Friday promo?',
+'If I am not a Tabby customer how should I subscribe?',
+'I received an incorrect/defective product what do I do?',
+'Are the prices different compared to me just going to the store directly?',
+'How can I earn points?',
+'Is there a minimum order amount to checkout using Smiles points?',
+'Is there an interest fee if I dont pay at the end of month?',
+'I cannot find the product that I am looking for.',
+'Can I use Smiles points to pay part of the bill?',
+'What are the benefits of this Earn and Redeem program?',
+'I am new to this type of service. Can I browse your app first?',
+'Is there any minimum order or delivery charge for deliveries?',
+'I have several products that I usually order. Can I have an option to select them without searching or browsing for them?',
+'How long do I have to wait for my groceries to arrive?',
+'What is the buffer time to receive the Smiles points after the return?'
+ ]
         };
 
         const stepsDetails = {
@@ -460,6 +684,10 @@
 
     `,
     'How to Place an Order': `
+        <div class="gif-content">
+            <img src="imgs/howtoplaceorder.gif" alt="How to place order">
+        </div>
+
         <div class="headline">How to Place an Order</div>
 
         <p><strong>Step 1: Register on the Application</strong></p>
@@ -513,56 +741,16 @@
             <li>If you have a promo code, add it on the checkout page and make sure to apply it to your order.</li>
         </ul>
     `,
-    'How to Apply a Promo Code to Your Order':`
-    <div class="headline">How to Apply a Promo Code to Your Order</div>
-
-<p><strong>Step 1: Choose a Primary Payment Method</strong></p>
-<ul>
-    <li>On the checkout page, select one of the following payment methods:
-        <ul>
-            <li><strong>Cash on Delivery</strong></li>
-            <li><strong>Credit Card on Delivery</strong></li>
-            <li><strong>Online Payment</strong></li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Step 2: Enter Your Promo Code</strong></p>
-<ul>
-    <li>On the same checkout page, locate the box designated for adding a voucher or promo code.</li>
-    <li>Enter your promo code and click "Apply."</li>
-</ul>
-
-<p><strong>Step 3: Verify Promo Code Requirements</strong></p>
-<ul>
-    <li>Ensure that your order meets the minimum basket value required by the promo code.</li>
-    <li>Review the terms and conditions of the promo code before completing your purchase.</li>
-</ul> `,
-'How to Pay for Your Order with Smiles Points': `
-<div class="headline">How to Pay for Your Order with Smiles Points</div>
-
-<p><strong>Step 1: Select a Primary Payment Method</strong></p>
-<ul>
-    <li>On the checkout page, start by choosing one of the following payment methods:
-        <ul>
-            <li><strong>Cash on Delivery</strong></li>
-            <li><strong>Credit Card on Delivery</strong></li>
-            <li><strong>Online Payment</strong></li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Step 2: Choose to Use Smiles Points</strong></p>
-<ul>
-    <li>Look for the option to use Smiles Points on the checkout page and click on it.</li>
-</ul>
-
-<p><strong>Step 3: Adjust the Smiles Points Amount</strong></p>
-<ul>
-    <li>Slide the Smiles Points icon to determine the amount you want to pay using your Smiles Points.</li>
-</ul>
-`,
 'How to Find Your Order':`
+ <div class="img1">
+            <img src="imgs/howto1.png" alt="How to find order">
+        </div>
+
+  <div class="img2">
+            <img src="imgs/howto2.png" alt="How to find order">
+        </div>       
+
+
 <div class="headline">How to Find Your Order</div>
 
 <p><strong>Step 1: Identify the Order's Market Type</strong></p>
@@ -597,6 +785,14 @@
 </ul>
 
 `, 'How to Find Your Voucher': `
+
+<div class="imgs1">
+            <img src="imgs/howtoV1.png" alt="How to Find Voucher">
+        </div>
+
+  <div class="imgs2">
+            <img src="imgs/howtov2.jpeg" alt="How to Find Voucher">
+        </div>   
 <div class="headline">How to Find Your Voucher</div>
 
 <p><strong>Step 1: Navigate to the Home Page</strong></p>
@@ -615,9 +811,11 @@
 </ul>
 
 <p>You’ll find all the active vouchers listed there.</p>
-`, 'How to Redeem a Cash Voucher':
-
- `<div class="headline">How to Redeem a Cash Voucher</div>
+`, 'How to Redeem a Cash Voucher to your Order':`
+<div class="gif-content">
+            <img src="imgs/howtoredeemtoorder.gif" alt="How to Redeem a Cash Voucher to your Order">
+        </div>
+    <div class="headline">How to Redeem a Cash Voucher to your Order</div>
 
 <p><strong>Step 1: Copy the Voucher Code</strong></p>
 <ul>
@@ -713,6 +911,9 @@
 
 `,
 'How to Link Your elGrocer App with Smiles App for Using Smiles Points': `
+<div class="gif-content">
+            <img src="imgs/howtolink.gif" alt="How to Pay with Smiles Points GIF">
+        </div>
 <div class="headline">How to Link Your elGrocer App with Smiles App for Using Smiles Points</div>
 
 <p><strong>Step 1: Ensure Account Consistency</strong></p>
@@ -925,121 +1126,305 @@
 <p>This procedure ensures appropriate actions are taken based on the expiry status and pricing of the item.</p>
 `, 'Where Can I Find elGrocer in the Smiles App?': `
 
-    <h1>Where Can I Find elGrocer in the Smiles App?</h1>
+    <div class="headline">Where Can I Find elGrocer in the Smiles App?</div>
+
     <p>Follow these steps to locate elGrocer in the Smiles App:</p>
-    <ol>
-        <li>Open the <span class="highlight">Smiles</span> application on your device.</li>
-        <li>On the home page, look for the section labeled <span class="highlight">"Groceries & More"</span> or <span class="highlight">"Smiles Market"</span>.</li>
-        <li>Click on <span class="highlight">"Groceries & More"</span> or <span class="highlight">"Smiles Market"</span> to explore various grocery options, including elGrocer.</li>
-    </ol>
+
+    <ul>
+        <li>Open the Smiles application on your device.</li>
+        <li>On the home page, look for the section labeled <strong>"Groceries & More"</strong> or <strong>"Smiles Market"</strong>.</li>
+        <li>Click on <strong>"Groceries & More"</strong> or <strong>"Smiles Market"</strong> to explore various grocery options, including elGrocer.</li>
+    </ul>
+
 `, 'Where Can I Find elWallet/Vouchers/Orders/Addresses?':
 `
- <h1>Where Can I Find elWallet/Vouchers/Orders/Addresses?</h1>
+  <div class="headline">Where Can I Find elWallet/Vouchers/Orders/Addresses?</div>
+
     <p>Follow these steps to find various features in the Smiles App:</p>
-    <ol>
-        <li>
-            <span class="highlight">Navigate to Profile Account Page</span>
-            <div class="details">
-                <p>Go to your account profile in the app to access the following:</p>
-                <ul>
-                    <li><span class="highlight">Live Chat</span> - For support and inquiries.</li>
-                    <li><span class="highlight">Orders</span> - To view and manage your order history.</li>
-                    <li><span class="highlight">Addresses</span> - To update and manage your delivery addresses.</li>
-                    <li><span class="highlight">Payment Method</span> - To add or update your payment information.</li>
-                    <li><span class="highlight">elWallet</span> - To view your wallet balance and manage your vouchers.</li>
-                </ul>
-            </div>
-        </li>
-    </ol>
+
+    <ul>
+        <li><strong>Navigate to Profile Account Page</strong></li>
+        <li>Go to your account profile in the app to access the following:</li>
+        <ul>
+            <li><strong>Live Chat</strong> - For support and inquiries.</li>
+            <li><strong>Orders</strong> - To view and manage your order history.</li>
+            <li><strong>Addresses</strong> - To update and manage your delivery addresses.</li>
+            <li><strong>Payment Method</strong> - To add or update your payment information.</li>
+            <li><strong>elWallet</strong> - To view your wallet balance and manage your vouchers.</li>
+        </ul>
+    </ul>
 `, 'Where Can I Find the Available Stores/Slots?': `
-  <h1>Where Can I Find the Available Stores/Slots?</h1>
-    <p>Follow these steps to view available stores and delivery slots:</p>
-    <ol>
-        <li>
-            <span class="highlight">Choose a Location</span>
-            <div class="details">
-                <p>From the app’s home page, you need to set or choose your location. This will allow you to:</p>
-                <ul>
-                    <li><span class="highlight">View Available Stores</span> - Find stores that operate in your chosen location.</li>
-                    <li><span class="highlight">See Delivery Slots</span> - Check available delivery time slots for the selected location.</li>
-                </ul>
-            </div>
+    <div class="headline">Where Can I Find the Available Stores/Slots?</div>
+
+    <p><strong>Step 1: Choose a Location</strong></p>
+    <ul>
+        <li>From the app’s home page, you need to set or choose your location. This will allow you to:
+            <ul>
+                <li><span class="highlight">View Available Stores</span> - Find stores that operate in your chosen location.</li>
+                <li><span class="highlight">See Delivery Slots</span> - Check available delivery time slots for the selected location.</li>
+            </ul>
         </li>
-    </ol>
+    </ul>
 `, 'What Are the Available Payment Methods?': `
 
- <h1>What Are the Available Payment Methods?</h1>
-    <p>Choose your preferred payment method from the options below:</p>
-    <div class="payment-methods">
-        <div class="payment-method">
-            <h2>Cash on Delivery</h2>
-            <div class="details">
-                <p>Pay the driver directly when your order arrives.</p>
-            </div>
-        </div>
-        <div class="payment-method">
-            <h2>Credit Card on Delivery</h2>
-            <div class="details">
-                <p>Use a card machine provided by the driver.</p>
-            </div>
-        </div>
-        <div class="payment-method">
-            <h2>Online Payment Method</h2>
-            <div class="details">
-                <p>Pay using a credit card through the app.</p>
-            </div>
-        </div>
-        <div class="payment-method">
-            <h2>elWallet</h2>
-            <div class="details">
-                <p>Use funds from your elWallet.</p>
-            </div>
-        </div>
-        <div class="payment-method">
-            <h2>Smiles Points</h2>
-            <div class="details">
-                <p>Apply Smiles Points as a discount on your order.</p>
-            </div>
-        </div>
-        <div class="payment-method">
-            <h2>Tabby</h2>
-            <div class="details">
-                <p>Choose to pay later with Tabby.</p>
-            </div>
-        </div>
-    </div>
+    <div class="headline">What Are the Available Payment Methods?</div>
+
+    <p><strong>Step 1: Choose Your Preferred Payment Method</strong></p>
+    <ul>
+        <li>Choose from the following payment methods:
+            <ul>
+                <li><strong>Cash on Delivery</strong> - Pay the driver directly when your order arrives.</li>
+                <li><strong>Credit Card on Delivery</strong> - Use a card machine provided by the driver.</li>
+                <li><strong>Online Payment Method</strong> - Pay using a credit card through the app.</li>
+                <li><strong>elWallet</strong> - Use funds from your elWallet.</li>
+                <li><strong>Smiles Points</strong> - Apply Smiles Points as a discount on your order.</li>
+                <li><strong>Tabby</strong> - Choose to pay later with Tabby.</li>
+            </ul>
+        </li>
+    </ul>
 `, 'How to Choose the Delivery Slot/Add Note/Confirm Location?':  `
- <h1>How to Choose the Delivery Slot/Add Note/Confirm Location?</h1>
-    <p>Follow these steps on the checkout page to complete your order:</p>
-    <div class="checkout-steps">
-        <div class="step">
-            <h2>Choose Delivery Slot</h2>
-            <div class="details">
-                <p>On the checkout page, select an available delivery slot that suits your schedule.</p>
-            </div>
+<div class="gif-content">
+            <img src="imgs/howtochoosethedeliveryslot.gif" alt="How to Choose the Delivery Slot/Add Note/Confirm Location?">
         </div>
-        <div class="step">
-            <h2>Confirm Location</h2>
-            <div class="details">
-                <p>Ensure that your delivery location is accurate before placing the order.</p>
-            </div>
+  <div class="headline">How to Choose the Delivery Slot/Add Note/Confirm Location?</div>
+
+    <p><strong>Step 1: Choose Delivery Slot</strong></p>
+    <ul>
+        <li>On the checkout page, select an available delivery slot that suits your schedule.</li>
+    </ul>
+
+    <p><strong>Step 2: Confirm Location</strong></p>
+    <ul>
+        <li>Ensure that your delivery location is accurate before placing the order.</li>
+    </ul>
+
+    <p><strong>Step 3: Leave a Note</strong></p>
+    <ul>
+        <li>Add any special instructions or preferences for the delivery team.</li>
+    </ul>
+
+    <p><strong>Step 4: View Available Delivery Slots with Date of the Day</strong></p>
+    <ul>
+        <li>Available slots are displayed by day, allowing you to pick the most convenient time.</li>
+    </ul>
+
+`, 'How to Redeem a Cash Voucher to your elWallet': ` 
+
+ <div class="gif-content">
+            <img src="imgs/howtoredeemtowallet.gif" alt="How to Pay with Smiles Points GIF">
         </div>
-        <div class="step">
-            <h2>Leave a Note</h2>
-            <div class="details">
-                <p>Add any special instructions or preferences for the delivery team.</p>
-            </div>
+
+  <div class="headline">How to Redeem a Cash Voucher to Your elWallet</div>
+
+<p><strong>Step 1: Copy the Voucher Code</strong></p>
+<ul>
+    <li>Ensure you have the voucher code copied to your clipboard.</li>
+</ul>
+
+<p><strong>Step 2: Navigate to Smiles Homepage</strong></p>
+<ul>
+    <li>Go to the Smiles homepage and click on <strong>‘Smiles Market’</strong>.</li>
+</ul>
+
+<p><strong>Step 3: Access Your elWallet</strong></p>
+<ul>
+    <li>Navigate to your profile page.</li>
+    <li>Scroll down and click on the <strong>‘elWallet’</strong> option.</li>
+    <li>Click on the <strong>Add Funds</strong> button.</li>
+    <li>Select <strong>Voucher</strong> and then click <strong>‘Next’</strong>.</li>
+</ul>
+
+<p><strong>Step 4: Apply the Voucher Code</strong></p>
+<ul>
+    <li>Click on <strong>‘Voucher code’</strong> and paste the copied code.</li>
+    <li>Press <strong>‘Redeem’</strong> to add the voucher value to your elWallet.</li>
+    <li>Check your elWallet balance to confirm the added funds.</li>
+</ul>`,
+    'How to Pay for Your Order with Smiles Points': ` 
+    <div class="gif-content">
+            <img src="imgs/SmilesPoints.gif" alt="How to Pay with Smiles Points GIF">
         </div>
-        <div class="step">
-            <h2>View Available Delivery Slots with Date of the Day</h2>
-            <div class="details">
-                <p>Available slots are displayed by day, allowing you to pick the most convenient time.</p>
-            </div>
-        </div>
-    </div>
+    
+    <div class="headline">How to Pay for Your Order with Smiles Points</div>
+
+<p><strong>Step 1: Select a Primary Payment Method</strong></p>
+<ul>
+    <li>On the checkout page, choose one of the following payment methods:
+        <ul>
+            <li><strong>Cash on Delivery</strong></li>
+            <li><strong>Credit Card on Delivery</strong></li>
+            <li><strong>Online Payment</strong></li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Step 2: Opt to Use Smiles Points</strong></p>
+<ul>
+    <li>Find the option to use Smiles Points on the checkout page and select it.</li>
+</ul>
+
+<p><strong>Step 3: Set the Amount of Smiles Points</strong></p>
+<ul>
+    <li>Use the Smiles Points slider to adjust the amount you wish to use for your payment.</li>
+</ul>
+`, 'Types of Stores': `
+<div class="headline">Types of Stores</div>
+
+<p><strong>Darkstores</strong></p>
+<ul>
+    <li><strong>Example Stores:</strong> Smiles Market, Smiles Market Abu Dhabi</li>
+    <li><strong>Escalation Channel:</strong> Slack: smiles-market-escalations</li>
+    <li><strong>Purpose:</strong> Address delivery issues and item-related concerns.</li>
+</ul>
+
+<p><strong>Dedicated Stores</strong></p>
+<ul>
+    <li><strong>Services:</strong> Our Delivery / Our Picking</li>
+    <li><strong>Escalation Channel:</strong> Slack: marketplace-logistics</li>
+    <li><strong>Purpose:</strong> 2nd-level escalation for store-related issues, only after verifying with delivery teams and the store.</li>
+</ul>
+
+<p><strong>Partial Dedicated Stores</strong></p>
+<ul>
+    <li><strong>Services:</strong> Our Delivery / Store Picking</li>
+    <li><strong>Escalation Channel:</strong> Slack: ops-excellence-cs-mp-logs</li>
+    <li><strong>Purpose:</strong> For 2nd-level escalation, notify the SPOC (Single Point of Contact), who will escalate via email on your behalf.</li>
+</ul>
+
+<p><strong>Non-Dedicated Stores</strong></p>
+<ul>
+    <li><strong>Services:</strong> Store's Delivery / Store's Picking</li>
+    <li><strong>Escalation Channel:</strong> Slack: ops-excellence-cs-mp-logs</li>
+    <li><strong>Purpose:</strong> For 2nd-level escalation, notify the SPOC, who will escalate via email on your behalf.</li>
+</ul>
+
+
+`, 'How to Identify Store Types': `
+
+<div class="headline">How to Identify Store Types</div>
+
+<p><strong>Dedicated Store:</strong></p>
+<ul>
+    <li><strong>Steps:</strong></li>
+    <ul>
+        <li>Open the store page.</li>
+        <li>Press <strong>CTRL + F</strong> and search for the word "<strong>Dedicated</strong>."</li>
+        <li>If the word "<strong>Dedicated</strong>" appears, the store is dedicated.</li>
+    </ul>
+</ul>
+
+<p><strong>Partial Dedicated or Non-Dedicated Store:</strong></p>
+<ul>
+    <li><strong>Steps:</strong></li>
+    <ul>
+        <li>Open the store page.</li>
+        <li>Press <strong>CTRL + F</strong> and search for the phrase "<strong>Show driver</strong>."</li>
+        <li>If the result is "<strong>Yes and no "Dedicated" at the store's page</strong>," the store is partial dedicated.</li>
+        <li>If the result is "<strong>No</strong>," the store is non-dedicated.</li>
+    </ul>
+</ul>` ,
+'I placed an order and then edited it to add more items. I have been charged twice.': `<p><strong>The first charge will be canceled automatically; we will only charge for the final amount of the edited order.</strong></p>`,  
+
+'When do I have to pay the Tabby payment?': `<p><strong>The Tabby Tab payment cycle runs from the the 25th of the month until the 24th of the next month. On the 25th you get an overview for your orders of that cycle. You have to pay by the 28th.</strong></p>`,  
+
+'I just placed an order have I been charged 1 AED?': `<p><strong>We have not charged you yet, we have requested an amount  of 1 AED to be on hold, and the rest of the amount will be captured from you once the order is ready to deliver.</strong></p>`,  
+
+'Can both primary and linked accounts login to elGrocer app?': `<p><strong>Primary and Linked accounts are a reference to Smiles accounts not elGrocer. elGrocer supports all Smiles accounts. Each account will access the same smiles balance they have on their Smiles app</strong></p>`,  
+
+'How can I redeem my points on Smiles? Or is the balance on Smiles and elGrocer equivalent? Or If I pay with my Smiles points on elGrocer will my balance on Smiles app decrease?': `<p><strong>Your Smiles balance is directly connected with your elGrocer app. If you earn points by ordering and receiving elGrocer groceries, the points will be reflected on your Smiles App balance. If you redeem any points on the elGrocer app, the points will be reduced automatically from your Smiles balance within the Smiles App.</strong></p>`,  
+
+'When I pay with my Smiles Points will I still earn points?': `<p><strong>When selecting to pay the order with Smiles points, you will NOT earn Points. When redeeming points, the earn feature does not apply. In a transaction, you can either EARN or REDEEM.</strong></p>`,  
+
+'If I will use a promo code? How will the Smiles points be calculated?': `<p><strong>-	When using a promo code, you will earn points on the amount paid after the discount. For example, if you have a bill of AED 100, and you are using a code for AED 10 off on your purchase you will receive 90 Smiles points </strong></p>`, 
+
+'What is the promo’s validity?': `<p><strong>Each promo code has its own expiration date. You can check the code's validity from the dedicated code page within the app or from the purchase page before completing the purchase.</strong></p>`,  
+
+'Do my points expire?': `<p><strong>All your Smiles points are governed by the terms and conditions stated in the Smiles App.</strong></p>`,  
+
+'Can I track my orders?': `<p><strong>You can track the status of your order by going to the "My Orders" menu item. You will also be notified via push notifications.</strong></p>`,  
+
+'How do I get started?': `<p><strong>Once you have downloaded the app, simply select your current location to see the list of partner stores available around you. Pick a store and start your grocery shopping experience. It is that simple!</strong></p>`,  
+
+'How much can I spend with Tabby?': `<p><strong>To keep shopping safe, spending limits are based on several factors including the type of products you're buying, the store you're buying from and your history with Tabby.</strong></p>`,  
+
+'Where can I find all my account info?': `<p><strong>Both your elGrocer and Smiles balance info can be accessed from the Profile menu within the elGrocer app or grocery section in Smiles App .</strong></p>`,  
+
+'Will I receive points for purchases I made prior to creating my rewards account?': `<p><strong>-	Earning Smiles points will start after you have created your elGrocer account and chosen to login to your Smiles account from within the elGrocer app.</strong></p>`,  
+
+'Can I schedule my delivery to be sent later/day?': `<p><strong>-	Yes, simply can choose the delivery Day and time that is suitable for you from checkout page</strong></p>`,  
+
+'Will I be able to use Smiles points that I had in my Smiles wallet previously?': `<p><strong>Yes, You can pay your order using smiles points, on the checking out page you will be able to choose smiles points as a payment method for your order.</strong></p>`,
+
+'I want to cancel my order can you please refund my payment?': `<p><strong>Your order will be canceled, and the charges on your card will be canceled.</strong></p>`,  
+
+'I redeemed points with my last purchase but now I want to return them. What will happen to my reward? Or if payment failed? Or in the case of substitution?': `<p><strong>-	If an elGrocer order placed using Smiles points is canceled for any reason, the Smiles points will be returned to your Smiles balance.</strong></p>`,  
+
+'Can you pay a 200AED bill with 200 Smiles points that you earned buying 200 AED on elGrocer?': `<p><strong>No, you earn 1 point with every 1 AED 1 spent. But it takes around 111 points to pay for 1 AED worth of groceries. It is as if you are getting a 1% cash back on your purchases.</strong></p>`, 
+
+'Is Tabby free to use?': `<p><strong>It is! Tabby does not charge interest or fees for any payments that are made on time.</strong></p>`,  
+
+'If I have a Business Mobile Number OR a Visitor Line Number OR a SWYP Number OR a Du Number OR an International Number OR any other type can I still earn and redeem smiles points using elGrocer app?': `<p><strong>-	elGrocer does not distinguish between number types. Any number that can register for a Smiles account can Earn and Redeem points on the elGrocer app.</strong></p>`,  
+
+'How are my points determined?': `<p><strong>For each AED 1 spent on elGrocer, you will earn 1 Smiles point.</strong></p>`,  
+
+'How do I cancel my order?': `<p><strong>Cancellation depends on the status of your order If your order is still under "pending" status, you can edit your order and cancel it, If your order is under the "accepted" status, it means that your order is still in the shop and can still be canceled. Please contact us over live chat so we can assist you, If your order is under the "En route" status, it means that the delivery team is already out for delivery. Canceling an order under this status works on a case-by-case basis. Please contact us so we can coordinate with our partner store.</strong></p>`,  
+
+'What is Tabby?': `<p><strong>Get more time to pay. With Elgrocer x Tabby you can shop NOW & pay at the end of the month with 0% interest fees.</strong></p>`,  
+
+'Can I repeat the same order as the one previously placed?': `<p><strong>Yes, simply go to "My Orders" and select Re-Order.</strong></p>`,  
+
+'How can I redeem a promo code?': `<p><strong>On the checking out page, you will find a field to apply the promo code, copy and paste the code and click on apply.</strong></p>`,  
+
+'How can I redeem my points at checkout?': `<p><strong>At the Checkout page within the elGrocer app, First, select your primary payment method: cash on delivery, credit card on delivery, or online payment. After that, you will find an option to pay for your order using Smiles points. Click on this option, and you will be redirected to another page to specify the amount of Smiles points you want to use. Slide the button to the right to select the desired amount of Smiles points, then click “Confirm"</strong></p>`,  
+
+'Can I have multiple delivery addresses?': `<p><strong>Absolutely! You can create multiple delivery addresses based on your preference</strong></p>`,  
+
+'How long does it take to activate my Tabby account?': `<p><strong>This is totally handled by Tabby. Their approval of the application will be subject to their review of your submitted data and circumstances.</strong></p>`, 
+
+'Where can I use elGrocer?': `<p><strong>Our service is available across UAE (Dubai, Abu Dhabi, Al Ain, Sharjah, RAK, Fujairah, Umm Al Quwain & Ajman)</strong></p>`,  
+
+'Is there a maximum number of attempts to enter the correct OTP?': `<p><strong>After a maximum of three attempts your transaction will be declined, and the authentication service will be blocked. There is a period of 24 hours until you can try again the authentication. Only 3 OTP attempts are recognized in one day.</strong></p>`, 
+
+'How can I use Tabby?': `<p><strong>Choose Tabby as a payment option in the checkout page.</strong></p>`,  
+
+'I received an update about my order mentioning that some items are not available.': `<p><strong>If your chosen item is unavailable, you will be notified and given the opportunity to select a substitute product. Alternative options will be presented on the order page for your selection.</strong></p>`, 
+
+'Can I use Tabby for smiles market & retailers?': `<p><strong>-	Yes, you can use it on Smiles Market or Retailers.</strong></p>`,  
+
+'How do I sign up?': `<p><strong>The process is simple! Click on the Smiles banner ( Earn Reward Banner ) in the elGrocer app and you will be guided through the sign-up process.</strong></p>`,  
+
+'What is the Happy Friday promo?': `<p><strong>On Friday all stores including Smiles Market, you will get a 15x code (points) on orders above AED 150 (capped at 5000 Smiles Points)</strong></p>`,
+
+'If I am not a Tabby customer how should I subscribe?': `<p><strong>You will be redirected to the page where you need a valid UAE Mobile Number, valid Email, Valid Emirates ID & Credit Card.</strong></p>`, 
+
+'I received an incorrect/defective product what do I do?': `<p><strong>We strongly recommend checking the products first. You have the option to refuse items if they are incorrect or in bad condition. Please contact us immediately so we can coordinate replacements with our partner stores.</strong></p>`,  
+
+'Are the prices different compared to me just going to the store directly?': `<p><strong>No difference! The prices are the same. The big advantage is that you do not have to waste time going to the store. Simply order all you need with just a few taps.</strong></p>`,
+
+'How can I earn points?': `<p><strong>Once you have linked your Smiles account with your elGrocer account by clicking on the Smiles banner, you will earn Smiles points with every dirham spent on the elGrocer app. Every AED 1 spent will earn 1 Smiles point. You can also earn points in many other ways through the Smiles App.</strong></p>`,  
+
+'Is there a minimum order amount to checkout using Smiles points?': `<p><strong>There is no min order value to use the Smiles Points, However, certain stores have a minimum amount to place the order, So, at this moment you need to have the entire amount for your order in Smiles points.</strong></p>`,  
+
+'Is there an interest fee if I dont pay at the end of month?': `<p><strong>This is totally handled by Tabby, You undertake to pay the following amounts because of late payment: 25 dirhams after the payment date (end of month payment n additional 25 dirhams if the amount is outstanding 14 days after the payment date. an additional 25 dirhams if the amount is outstanding 28 days after the payment date.</strong></p>`,  
+
+'I cannot find the product that I am looking for.': `<p><strong>The products you see in the app reflect our partner stores' inventories. We constantly update the products to provide accuracy and availability. If you cannot find what you need, please use the live chat feature so we can work with our partner stores to add the product (s).</strong></p>`,  
+
+'Can I use Smiles points to pay part of the bill?': `<p><strong>Yes, its possible, select the option to pay with Smiles points. You'll be able to specify the amount of points to use on the next page. Simply slide right the bar and click “confirm”</strong></p>`, 
+
+'What are the benefits of this Earn and Redeem program?': `<p><strong>With every purchase, you will earn Smiles points that can be used for Grocery shopping, Smiles Food orders, and any other Smiles partner. You can also redeem your Smiles points when you place your orders with elGrocer.</strong></p>`,  
+
+'I am new to this type of service. Can I browse your app first?': `<p><strong>Yes, you can freely browse our app first before ordering. Once you open the app the first time, simply select "Explore and Register later" option. The app will ask you to select your location and will show you the available stores in the area. After choosing a store and adding the products you want to your basket, you will be prompted to enter your contact details to proceed to checkout.</strong></p>`,  
+
+'Is there any minimum order or delivery charge for deliveries?': `<p><strong>elGrocer prices are the same as you see in stores. Some stores require more delivery men that work in shifts. This means minimum orders and delivery fees vary according to the retailer you order from. Smaller stores take orders with basket values as low as AED30. While in the case of some retailers that deliver in the same building or within 500m there are no delivery fees. All delivery terms are shown as details for our listed stores as well as on your order summary screen, where you are prompted to confirm your order.</strong></p>`,  
+
+'I have several products that I usually order. Can I have an option to select them without searching or browsing for them?': `<p><strong>Absolutely. Products usually purchased are listed in Shopping history for easy selection, Simply go to "My Orders" and click on Re-Order’</strong></p>`,  
+
+'How long do I have to wait for my groceries to arrive?': `<p><strong>Your groceries will be brought to you as fast as possible; our partner stores will do their absolute best to deliver on time. However, this may be affected by delivery personnel availability and workload, roads or weather conditions, and the distance between the store and the delivery address. If there is any delay, we will make sure to inform you as early as possible.</strong></p>`,  
+
+'What is the buffer time to receive the Smiles points after the return?': `
+<p><strong>24 - 48 hours (about 2 days)</strong></p> 
 
 `
-
 };
 
         mainQuerySelect.addEventListener('change', function() {
@@ -1060,6 +1445,72 @@
             if (mainQuery && subQuery) {
                 const content = stepsDetails[subQuery] || 'Content not available for the selected subquery.';
                 contentText.innerHTML = content;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                contentBox.classList.add('show');
+                document.querySelector('.container').style.transform = 'scale(0.9)'; // Shrink the container
+                document.querySelector('.container').style.zIndex = '0'; // Send container behind the content box
+            } else {
+                alert('Please select both Main Query and Sub Query.');
+            }
+        });
+
+        closeBtn.addEventListener('click', function() {
+            contentBox.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.querySelector('.container').style.transform = 'scale(1)'; // Restore original size
+            document.querySelector('.container').style.zIndex = '1'; // Bring container back on top
+        });
+
+        function populateSubQueries(mainQuery) {
+            const options = subqueries[mainQuery] || [];
+            subQuerySelect.innerHTML = '<option value="">Select Sub Query</option>';
+            options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                subQuerySelect.appendChild(opt);
+            });
+        }
+
+        function updateContent(subQuery) {
+            const content = stepsDetails[subQuery] || 'Content not available for the selected subquery.';
+            contentText.innerHTML = content;
+        }
+
+        function handleSearchInput() {
+            const query = searchBar.value.toLowerCase();
+            suggestionsList.innerHTML = '';
+
+            Object.keys(subqueries).forEach(mainQuery => {
+                subqueries[mainQuery].forEach(subQuery => {
+                    if (subQuery.toLowerCase().includes(query)) {
+                        const li = document.createElement('li');
+                        li.textContent = subQuery;
+                        li.addEventListener('click', () => {
+                            mainQuerySelect.value = mainQuery;
+                            populateSubQueries(mainQuery);
+                            subQuerySelect.value = subQuery;
+                            updateContent(subQuery);
+                            suggestionsList.innerHTML = ''; // Clear suggestions
+                        });
+                        suggestionsList.appendChild(li);
+                    }
+                });
+            });
+        }
+
+        searchBar.addEventListener('input', handleSearchInput);
+
+        mainQuerySelect.addEventListener('change', function() {
+            const mainQuery = mainQuerySelect.value;
+            populateSubQueries(mainQuery);
+        });
+
+        submitBtn.addEventListener('click', function() {
+            const mainQuery = mainQuerySelect.value;
+            const subQuery = subQuerySelect.value;
+            if (mainQuery && subQuery) {
+                updateContent(subQuery);
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
                 contentBox.classList.add('show');
                 document.querySelector('.container').style.transform = 'scale(0.9)'; // Shrink the container
