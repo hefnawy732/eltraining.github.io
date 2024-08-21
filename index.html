@@ -255,6 +255,15 @@ img.img-fluid {
     height: 300px;
 }
 
+.WhoWeAre img {
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 50px;
+
+}
+
 @media (max-width: 768px) {
     .gif-content img,
     .img1 img,
@@ -618,7 +627,8 @@ img.img-fluid {
 'Is there any minimum order or delivery charge for deliveries?',
 'I have several products that I usually order. Can I have an option to select them without searching or browsing for them?',
 'How long do I have to wait for my groceries to arrive?',
-'What is the buffer time to receive the Smiles points after the return?'
+'What is the buffer time to receive the Smiles points after the return?',
+'Who Are We?'
  ]
         };
 
@@ -1597,6 +1607,12 @@ img.img-fluid {
 <p><strong>24 - 48 hours (about 2 days)</strong></p> 
 
 `
+'Who Are We?':  `
+
+<div class="WhoWeAre">
+            <img src="imgs/WhoWeAre.jpg" alt="WhoWeAre">
+</div>
+ `
 };
 
         mainQuerySelect.addEventListener('change', function() {
