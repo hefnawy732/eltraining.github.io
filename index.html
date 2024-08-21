@@ -518,6 +518,7 @@ img.img-fluid {
         <ul id="suggestions-list" class="suggestions-list"></ul>
         <select id="main-query">
             <option value="">Select Main Query</option>
+            <option value="General">General</option>
             <option value="Technical issues">Technical issues</option>
             <option value="Order-related issues">Order-related issues</option>
             <option value="Q&A">Q&A</option>
@@ -554,6 +555,9 @@ img.img-fluid {
 
 
         const subqueries = {
+  'General': ['Types of Stores',
+                'How to Identify Store Types'
+            ],
             'Technical issues': [
                 'How to Place an Order',
                 'How to Redeem a Cash Voucher to your Order',
@@ -575,9 +579,7 @@ img.img-fluid {
                 'Damaged item',
                 'Wrong Item/Wrong Item Description',
                 'Expiry-Issue Item',
-                'Late Delivery',
-                'Types of Stores',
-                'How to Identify Store Types'
+                'Late Delivery'
             ],
             'Q&A': [
 'I placed an order and then edited it to add more items. I have been charged twice.',
