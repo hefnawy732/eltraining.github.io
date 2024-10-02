@@ -523,6 +523,7 @@ img.img-fluid {
             <option value="Order-related issues">Order-related issues</option>
             <option value="Q&A">Q&A</option>
             <option value="Organizational Structure">Organizational Structure</option>
+            <option value="SOPs">SOPs</option>
 
         </select>
 
@@ -637,7 +638,13 @@ img.img-fluid {
   'Organizational Structure': [
     'Who Are We?'
 
- ]
+ ],
+'SOPs': [
+'Dispatch',
+'MarketPlace',
+'Logistics',
+'Customer Service',
+'Dark Store' ]
         };
 
         const stepsDetails = {
@@ -695,7 +702,7 @@ img.img-fluid {
                         <li>Consult the Dispatch team on Slack to locate the item.</li>
                         <li>If the item was missed by the picker:
                             <ul>
-                                <li>Submit a Jotform for the missing item: <a href="https://submit.jotform.com/230050480940042" target="_blank">Jotform Link</a></li>
+                                <li>Submit a return/replacement/missing form for the missing item: <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu" target="_blank">return/replacement/missing Link</a></li>
                                 <li>Arrange a driver to deliver the item based on the customer’s availability.</li>
                             </ul>
                         </li>
@@ -1623,7 +1630,7 @@ img.img-fluid {
  `,
 'Resources': 
 `
-    <p><strong>Jotform<a href="https://submit.jotform.com/230050480940042" target="_blank"> here</a></strong></p>
+    <p><strong>Return/Replacement/Missing form <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu" target="_blank"> here</a></strong></p>
     <p><strong>Dashboard<a href="https://el-grocer-admin.herokuapp.com/admin/orders/1916693694" target="_blank"> here</a></strong></p>
     <p><strong>SendBird<a href="https://dashboard.sendbird.com/F061BADA-1171-4478-8CFB-CBACC012301C/desk/conversation/18770697" target="_blank"> here</a></strong></p>
     <p><strong>Online Payment Form<a href="https://forms.office.com/?redirecturl=https%3a%2f%2fforms.office.com%2fpages%2fdesignpagev2.aspx%3fsubpage%3ddesign%26id%3d26NOW3wJZESGrnzQK0wWQlo5aGmHckhFiVEttHPkVmpURU1DTlZJNkhHN0JZQjE2R0o3S09TSjJCMy4u%26analysis%3dfalse%26topview%3dPreview&auth_pvr=OrgId" target="_blank"> here</a></strong></p>
@@ -1637,11 +1644,661 @@ img.img-fluid {
     <p><strong>Heic to JPG convertor<a href="https://heictojpg.com/#google_vignette" target="_blank"> here</a></strong></p>
     <p><strong>CS File Images<a href="https://elgrocer0-my.sharepoint.com/personal/khaled_elgrocer_com/_layouts/15/onedrive.aspx[…]nal%2Fkhaled%5Felgrocer%5Fcom%2FDocuments%2Fcs%2Dimages" target="_blank"> here</a></strong></p>
     <p><strong>Yeastar<a href="https://www.yeastar.com/linkus-download/" target="_blank"> here</a> Note:(Agents from 1008:1011/Password: Elgrocer@2024/Domain:elgrocer.ras.yeastar.com)</strong></p>
+`,
+'Dispatch': `
+<h1>Standard Operating Procedure (SOP)</h1>
+<h2>Title: Customer Support and Dispatch Team Collaboration</h2>
+<h3>Version: 1.1</h3>
+<h3>Date: September 2024</h3>
+<h3>Department: Customer Support & Dispatch</h3>
 
+<h2>1. Purpose</h2>
+<p>To outline the collaboration process between the CS team and the Dispatch team to ensure smooth, timely, and cost-effective delivery of customer orders. This SOP includes key communication protocols, escalation guidelines, and return/replacement procedures.</p>
 
+<h2>2. Scope</h2>
+<p>This SOP applies to all Customer Support Agents (CSRs) and the Dispatch Team handling delivery-related tasks for orders placed via the elGrocer by Smiles application. It covers updating customer information, managing delivery zones, handling late orders, and managing return/replacement requests.</p>
 
+<h2>3. Responsibilities</h2>
+<ul>
+    <li>Customer Support Agents (CSRs): Responsible for assisting customers with delivery-related issues and working with the Dispatch Team to ensure smooth order fulfillment.</li>
+    <li>Dispatch Team: Responsible for guiding and navigating drivers to deliver orders on time and at the lowest cost.</li>
+</ul>
 
+<h2>4. Key Communication Channels</h2>
+<ul>
+    <li>Slack Channel: <strong>Dispatch-CS</strong>
+        <p>This channel will be used for real-time communication between the CS and Dispatch teams regarding delivery updates, changes, or escalations.</p>
+    </li>
+</ul>
 
+<h2>5. SOP for CS-Dispatch Interactions</h2>
+
+<ul>
+    <li>Customer Information Update (Phone Number and Address)
+        <ul>
+            <li>Phone Number Update:
+                <p>If the customer requests to update their phone number for delivery purposes, inform the Dispatch Team on Slack immediately to avoid wasting the driver's time. This ensures the driver can reach the customer directly.</p>
+            </li>
+            <li>Address Update:
+                <ul>
+                    <li>Before confirming the address change to the customer, check if the new location falls within the same delivery zone as the store:
+                        <ul>
+                            <li>If in the same delivery zone: Confirm with the customer that the delivery will proceed to the new location.</li>
+                            <li>If out of the delivery zone: Apologize to the customer and explain that delivery cannot be made to the new location. Kindly ask the customer to cancel the order, update their location, and select stores available within their new delivery zone.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Customer Notes (Special Instructions):
+                <p>If the customer forgot to add notes (e.g., “Don’t ring the bell,” “Leave at doorstep”), inform the Dispatch Team on Slack to ensure the driver adheres to the customer’s instructions.</p>
+            </li>
+        </ul>
+    </li>
+    
+    <li>Handling Late Orders
+        <ul>
+            <li>Standard Late Order Query:
+                <p>When the customer complains that their order is late, do not immediately ask the Dispatch Team for an ETA. Instead, use the Locus navigation tool to check the driver’s status and details. Provide the driver’s information to the customer if requested.</p>
+            </li>
+            <li>Late Order Exceeding Delivery Slot:
+                <p>If the order exceeds the allocated delivery slot hours, escalate to the Dispatch Team on Slack to prioritize the delivery as soon as possible.</p>
+            </li>
+        </ul>
+    </li>
+    
+    <li>Return, Replacement, and Missing Items
+        <ul>
+            <li>Return/Replacement Requests:
+                <ul>
+                    <li>Accept return or replacement requests only if the item is:
+                        <ul>
+                            <li>Wrongly delivered</li>
+                            <li>Damaged</li>
+                            <li>Expired</li>
+                        </ul>
+                    </li>
+                    <li>Check the item’s value:
+                        <ul>
+                            <li>For items above 20 AED: Raise the return/replacement request by filling out the <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu">Return/Replacement/Missing Item Request Form</a>.</li>
+                            <li>For items under 20 AED: Refund the customer directly.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Missing Items:
+                <p>If an item was missed at the store (either by the picker or driver), raise a Return/Replacement/Missing Item Request directly via the form. Confirm with the store that the item was missed and that a driver will be assigned.</p>
+            </li>
+            <li>Form Link for Return/Replacement/Missing Items:
+                <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu">Return/Replacement/Missing Item Request Form</a></p>
+            </li>
+            <li>Confirmation with the Store:
+                <p>Before raising any request, confirm with the store that they will accept the return or replacement.</p>
+            </li>
+            <li>Suitable Time with the Customer:
+                <p>Confirm a suitable time for the customer to be available for the return/replacement delivery before raising the request.</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h2>6. Important Notes</h2>
+<ul>
+    <li>Allowed Time for Returns/Replacements/Missing Items:
+        <p>These requests can only be fulfilled between 10 AM and 8 PM. Requests for the first and last delivery slots of the day are not allowed.</p>
+    </li>
+    <li>Driver’s Shift:
+        <p>Drivers are available for delivery between 7 AM and 10 PM. Ensure all delivery-related requests are communicated to the Dispatch Team within this window.</p>
+    </li>
+</ul>
+
+<h2>7. Performance Monitoring and Escalation</h2>
+<ul>
+    <li>Handling Late Orders:
+        <p>Ensure orders exceeding their delivery slots are escalated to the Dispatch Team for prioritization.</p>
+    </li>
+    <li>Compliance with SOP:
+        <p>Both the CS and Dispatch teams should follow this SOP to ensure efficient and timely delivery of customer orders.</p>
+    </li>
+</ul>
+
+<h2>8. Version Control</h2>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support Manager</li>
+</ul>
+
+`,
+'MarketPlace': `
+
+<h1>Standard Operating Procedure (SOP)</h1>
+<h2>Title: Customer Support Escalation to Marketplace Department</h2>
+<h3>Version: 1.1</h3>
+<h3>Date: September 2024</h3>
+<h3>Department: Customer Support & Marketplace Operations</h3>
+
+<h2>1. Purpose</h2>
+<p>To outline the procedures for escalating customer-related issues from the Customer Support (CS) team to the Marketplace (MP) Department, ensuring quick resolutions for problems arising from both Partial Dedicated Stores and Non-Dedicated Stores.</p>
+
+<h2>2. Scope</h2>
+<p>This SOP applies to all Customer Support Agents handling escalations concerning stores managed by the Marketplace Department, specifically Partial Dedicated Stores and Non-Dedicated Stores.</p>
+
+<h2>3. Work Schedule</h2>
+<ul>
+    <li>Working Hours: 9 hours per day with one day off per week.</li>
+    <li>Breaks: 1 hour break divided into two 30-minute breaks.</li>
+    <li>Salary: Hourly based, $2.2 per hour.</li>
+</ul>
+
+<h2>4. Responsibilities</h2>
+<ul>
+    <li>Customer Support Agents (CSRs): Address customer issues, verify order status, and escalate unresolved cases to the Marketplace team.</li>
+    <li>Marketplace Team: Responsible for managing pickers in Partial Dedicated Stores and overseeing both picking and delivery for Non-Dedicated Stores.</li>
+</ul>
+
+<h2>5. Definitions</h2>
+<ul>
+    <li>Partial Dedicated Stores: Stores where picking is managed by in-store pickers, but delivery is managed by the company.</li>
+    <li>Non-Dedicated Stores: Stores responsible for both picking and delivering orders independently.</li>
+</ul>
+
+<h2>6. Communication and Escalation Channels</h2>
+<ul>
+    <li>Slack Channel: <strong>ops-excellence-cs-mp-logs</strong></li>
+    <li>Head of Department: Fayiz Vajuhudeen, Head of Marketplace Operations.</li>
+    <li>Escalation Procedure: Escalations to the Business Development Executives (BDEs) are made when the store does not respond or resolve issues.</li>
+</ul>
+
+<h2>7. Escalation Cases between CS and Marketplace Team</h2>
+<ul>
+    <li>No Response Cases
+        <ul>
+            <li>Situation: When CS does not receive a timely response from the store regarding an order or issue.</li>
+            <li>Action: Escalate to the Marketplace Department via ops-excellence-cs-mp-logs to engage the Business Development Executives (BDEs), who will liaise with store management.</li>
+        </ul>
+    </li>
+    <li>Device Malfunctioning
+        <ul>
+            <li>Situation: Store devices are malfunctioning or not processing orders correctly.</li>
+            <li>Action: Raise the issue with the Marketplace Department to troubleshoot device or system issues and coordinate with tech support.</li>
+        </ul>
+    </li>
+    <li>Missing Numbers on Dashboard (DB)
+        <ul>
+            <li>Situation: The CS team or store is unable to process the order due to missing or incorrect numbers on the dashboard.</li>
+            <li>Action: Escalate to the Marketplace Department for further investigation and to correct the information on the system.</li>
+        </ul>
+    </li>
+    <li>Store Picker Doesn’t Know How to Process the Order
+        <ul>
+            <li>Situation: Store picker lacks knowledge or is unable to properly process the order.</li>
+            <li>Action: Escalate to the Marketplace Department to provide necessary training or instructions to the picker on processing the order.</li>
+        </ul>
+    </li>
+    <li>Acceptance Errors (Tech Issues)
+        <ul>
+            <li>Situation: Orders are not being accepted by the store due to technical issues, leading to order delays.</li>
+            <li>Action: Raise an escalation to the Marketplace Department to check the acceptance system and resolve the technical glitch.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>8. Missing Item Procedure for Partial Dedicated Stores</h2>
+<ul>
+    <li>Step 1: Verify with the Dispatch Team if the driver has the missing item.</li>
+    <li>Step 2: Simultaneously, ask the picker in the store to check whether the missing item is still in-store.</li>
+    <li>Step 3: If both the picker and the driver confirm that the item is not with them:
+        <ul>
+            <li>Escalate the case to CS-Approvals on Slack.</li>
+            <li>The SPOC will coordinate with the Marketplace team to check with store management and confirm the missing item’s status.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>9. Conclusion</h2>
+<p>This SOP ensures that all escalations between the Customer Support team and the Marketplace Department follow a structured process to minimize delays and improve customer satisfaction. Timely communication between teams is key to resolving issues related to missing items, device malfunctions, and order processing errors.</p>
+<h2>8. Version Control</h2>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support Manager</li>
+</ul>
+`,
+'Logistics': ` <h1>Standard Operating Procedure (SOP)</h1>
+<h2>Title: CS Team Interaction with Logistics Department</h2>
+<h3>Version: 1.1</h3>
+<h3>Date: September 2024</h3>
+<h3>Department: Customer Support & Logistics</h3>
+
+<h2>1. Purpose</h2>
+<p>To define clear procedures for the collaboration between the Customer Support team and the Logistics Department, ensuring timely resolutions of issues related to deliveries, store responsiveness, and picker management in dedicated stores and dark stores.</p>
+
+<h2>2. Scope</h2>
+<p>This SOP applies to all interactions between the CS team and the Logistics Department, specifically for handling escalations related to delivery slots, pickers, and delivery issues in dedicated stores and dark stores.</p>
+
+<h2>3. Communication Channels</h2>
+<ul>
+    <li>Slack Channel for Communication:
+        <ul>
+            <li>ops-excellence-cs-mp-logs</li>
+            <li>cs-logistics</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>4. Key Stakeholders</h2>
+<ul>
+    <li>Logistics Department Head: Sathish Kumar, Head of Dark Stores & Logistics.</li>
+    <li>Customer Support Team: Responsible for raising escalations and addressing customer inquiries.</li>
+</ul>
+
+<h2>5. Responsibilities</h2>
+<ul>
+    <li>Logistics Department: Manages the Dispatch team, pickers in dedicated stores, and Smiles dark stores. Ensures delivery slots are correctly set and resolves escalations from the CS team.</li>
+    <li>CS Team: Handles customer complaints and escalates to the Logistics team only after attempting to resolve the issue with the store or picker directly.</li>
+</ul>
+
+<h2>6. Escalation Procedure</h2>
+<ul>
+    <li>Step 1: Initial Issue Handling with the Dedicated Store
+        <ul>
+            <li>CSRs should always first attempt to resolve issues directly with the store picker in the dedicated store.</li>
+            <li>Use the WhatsApp group to communicate with the store’s pickers, as they are typically responsive.</li>
+        </ul>
+    </li>
+    <li>Step 2: Criteria for Escalation to Logistics
+        <ul>
+            <li>Only escalate to the Logistics team if:
+                <ul>
+                    <li>No response has been received from the store picker after initial outreach.</li>
+                    <li>There is an urgent delivery issue that needs to be addressed (e.g., wrong delivery slots for orders).</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Step 3: Escalation Process
+        <ul>
+            <li>Escalate the issue to the Logistics team using the Slack channels ops-excellence-cs-mp-logs or cs-logistics.</li>
+            <li>Provide all necessary details, including the order number, store name, customer’s issue, and attempted resolutions with the store.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>7. Handling Delivery Slot Issues</h2>
+<ul>
+    <li>Instant Orders and Delivery Slot Issues:
+        <ul>
+            <li>If instant orders are added to the wrong delivery slot (e.g., assigned to the first slot of the day instead of the correct one), escalate this issue to the Logistics team.</li>
+            <li>The Logistics team will be responsible for adjusting the delivery slot to the correct time.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>8. Dark Stores: Smiles Market and Smiles Market Abu Dhabi</h2>
+<ul>
+    <li>Smiles Market and Smiles Market Abu Dhabi are dark stores managed by the Logistics Department.</li>
+    <li>If there are any issues with delivery times, item availability, or picker responsiveness, follow the standard escalation process mentioned above.</li>
+</ul>
+
+<h2>9. Compliance and Documentation</h2>
+<ul>
+    <li>Ensure all communications with the Logistics Department are logged in the appropriate channels.</li>
+    <li>Keep track of escalations raised to ensure timely follow-up and resolution.</li>
+</ul>
+
+<h2>10. Version Control</h2>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support & Logistics Managers</li>
+</ul>
+
+<p>This SOP ensures a streamlined process for escalating issues between the Customer Support team and the Logistics Department, helping maintain smooth operations in dedicated stores and dark stores.</p>
+ `,
+'Customer Service': `
+<h1>Standard Operating Procedure (SOP)</h1>
+<h2>Title: Customer Support Ticket Handling Process</h2>
+<h3>Version: 1.1</h3>
+<h3>Date: August 2024</h3>
+<h3>Department: Customer Support</h3>
+
+<h2>1. Purpose</h2>
+<p>To provide clear guidelines for managing customer support inquiries through Sendbird, ensuring timely resolutions, customer satisfaction, and compliance with company policies.</p>
+
+<h2>2. Scope</h2>
+<p>This SOP applies to all Customer Support Agents handling inquiries related to orders placed via the elGrocer by Smiles application, including complaints, escalations, refunds, and ticket closures.</p>
+
+<h2>3. Work Schedule</h2>
+<ul>
+    <li>Working Hours: 9 hours per day, 1 day off per week.</li>
+    <li>Breaks: 1-hour split into two 30-minute breaks.</li>
+</ul>
+
+<h2>4. Responsibilities</h2>
+<ul>
+    <li>Customer Support Agents (CSRs): Handle customer complaints and inquiries, aiming to resolve issues efficiently and professionally.</li>
+    <li>SPOCS: Oversee performance, handle escalations and refund approvals, communicate with other departments, conduct quality audits, review and submit refunds on Kissflow, monitor queue status, resolve complaints received from Smiles and Etisalat, contact customers for feedback resolution, and ensure adherence to SOP.</li>
+</ul>
+
+<h2>5. Key Metrics (KPIs)</h2>
+<ul>
+    <li>Average Response Time (ART): Target = 30 seconds.</li>
+    <li>Average Handling Time (AHT): Target = 30 minutes per ticket.</li>
+    <li>Customer Satisfaction (CSAT): Maintain an average of 4.7 or above.</li>
+    <li>Quality Audits: The average score should be 90% and above.</li>
+</ul>
+
+<h2>6. Procedure for Handling Tickets</h2>
+<ol>
+    <li>Greeting the Customer
+        <ul>
+            <li>Begin with a professional, friendly greeting.</li>
+            <li>Example: "Welcome to Smiles Market! How can I assist you today?"</li>
+        </ul>
+    </li>
+    <li>Identify the Query
+        <ul>
+            <li>Categorize the issue:
+                <ul>
+                    <li>Order Issues: Late delivery, wrong/damaged/missing items, rescheduling.</li>
+                    <li>Payment Issues: Refund inquiries, online payment failure, changing payment methods.</li>
+                    <li>App Issues: Technical support for Shopper/Pickers app, catalog errors.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Investigation
+        <ul>
+            <li>Verify order details using internal tools (order dashboard, payment systems).</li>
+            <li>For payment-related queries, verify transaction status.</li>
+        </ul>
+    </li>
+    <li>Provide a Resolution
+        <ul>
+            <li>Offer solutions based on the query type:
+                <ul>
+                    <li>Order Issues: Coordinate with logistics or marketplace teams.</li>
+                    <li>Payment Issues: Initiate refunds or confirm payment status.</li>
+                    <li>App Issues: Provide guidance or escalate to technical teams.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Escalation Process
+        <ul>
+            <li>Escalate unresolved issues to the relevant Slack channel based on store type:
+                <ul>
+                    <li>Dark Stores: smiles-market-escalations</li>
+                    <li>Dedicated Stores: marketplace-logistics</li>
+                    <li>Partial & Non-Dedicated Stores: ops-excellence-cs-mp-logs</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Update the Customer
+        <ul>
+            <li>Keep the customer informed about the status of their issue.</li>
+            <li>Apologize for any delays and ensure the customer their issue is being resolved.</li>
+        </ul>
+    </li>
+    <li>Close the Ticket
+        <ul>
+            <li>Confirm with the customer if any further assistance is required before closing.</li>
+        </ul>
+    </li>
+</ol>
+
+<h2>7. Refunds</h2>
+<ol>
+    <li>Calculate the Refund
+        <ul>
+            <li>Correctly calculate the refund amount depending on the case, including the cost of the item, delivery fees, etc.</li>
+        </ul>
+    </li>
+    <li>Request Refund Approval
+        <ul>
+            <li>Submit a refund approval request via Slack to the channel: CS-Approvals.</li>
+        </ul>
+    </li>
+    <li>Process Refund Based on Payment Type
+        <ul>
+            <li>For Online Payments or Cash on Delivery (COD):
+                <ul>
+                    <li>Raise the refund request through Kissflow using the Sendbird widget and select Refund Request.</li>
+                    <li>If the customer requests a bank refund, try to convince them that elWallet refunds are faster and more efficient for future orders.</li>
+                    <li>If the customer insists on a bank refund, raise the request on the Online Payment Sheet.</li>
+                </ul>
+            </li>
+            <li>For elWallet, Smiles Points, or COD Refunds:
+                <ul>
+                    <li>Raise the refund via Kissflow using Sendbird and select Promo Code Request.</li>
+                </ul>
+            </li>
+            <li>For Tabby Refunds:
+                <ul>
+                    <li>Raise the refund request to the Online Payment Sheet for processing by the finance team.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Notify the Customer
+        <ul>
+            <li>Communicate the refund details to the customer, including expected processing times:
+                <ul>
+                    <li>Refunds processed through Kissflow: Usually take 24 hours to reflect in the customer’s account.</li>
+                    <li>Bank account refunds: This may take 3-5 business days, depending on the customer’s bank policies.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<h2>8. Break Management</h2>
+<ul>
+    <li>Agents are entitled to two 30-minute breaks during their shift.</li>
+    <li>Breaks must not overlap with peak support hours to ensure sufficient coverage.</li>
+</ul>
+
+<h2>9. Escalation and Stakeholder Management</h2>
+<ul>
+    <li>Escalate unresolved issues promptly using the appropriate Slack channels depending on store type:
+        <ul>
+            <li>Dark Stores: smiles-market-escalations</li>
+            <li>Dedicated Stores: marketplace-logistics</li>
+            <li>Partial & Non-Dedicated Stores: ops-excellence-cs-mp-logs</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>10. Performance Monitoring and Feedback</h2>
+<ul>
+    <li>Monitor ART and AHT to ensure targets are met.</li>
+    <li>Regularly review CSAT scores and quality audits for continuous improvement.</li>
+</ul>
+
+<h2>11. Compliance and Documentation</h2>
+<ul>
+    <li>All customer interactions must be logged in the Sendbird tool.</li>
+    <li>Document escalations and ticket updates clearly in internal systems.</li>
+</ul>
+
+<h2>12. Version Control</h2>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support Manager</li>
+</ul>
+
+<p>This SOP ensures that the customer support process is efficient, meets the required KPIs, and handles all escalations and refunds in a timely manner.</p>
+
+`,
+'Dark Store': `
+<h1>Standard Operating Procedure (SOP)</h1>
+<h2>Title: Customer Support and Dark Store Team Collaboration</h2>
+<h3>Version: 1.1</h3>
+<h3>Date: September 2024</h3>
+<h3>Department: Customer Support & Dark Store Team</h3>
+
+<h2>1. Purpose</h2>
+<p>This SOP outlines the procedures for collaboration between the Customer Support (CS) team and the Dark Store team to ensure efficient handling of customer complaints regarding missing items, wrong items, damaged items, and near-expiry items.</p>
+
+<h2>2. Scope</h2>
+<p>This SOP applies to all customer complaints related to orders fulfilled by the Dark Store team (Smiles Market, Smiles Market Abu Dhabi) through the elGrocer platform.</p>
+
+<h2>3. Communication Channel</h2>
+<ul>
+    <li>Slack Channel: <strong>smiles-market-escalations</strong></li>
+    <li>Head of Dark Store Team: Sathish Kumar, Head of Dark Stores & Logistics.</li>
+</ul>
+
+<h2>4. Procedure for Handling Escalations</h2>
+<ol>
+    <li><strong>Gathering Information from the Customer</strong>
+        <ul>
+            <li><strong>For Missing Items:</strong>
+                <ul>
+                    <li>Ask the customer how many bags they received.</li>
+                    <li>Request a photo of the printed paper bill attached to the bags.</li>
+                    <li>Request photos of the bag labels.</li>
+                    <li>Ask for the name of the missing item.</li>
+                    <li>This will help identify whether it was a driver's or picker's mistake. For example:
+                        <ul>
+                            <li>If the printed bill says the customer should receive 3 bags but they received only 2, it’s likely a driver's mistake.</li>
+                            <li>Escalate the issue to Slack Channel: <strong>smiles-market-escalations</strong>, mentioning fleet supervisors Dhave, Ram, and Zeeshan Ali. Ask them to check with the driver and arrange delivery of the missing items.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>For Wrong Items:</strong>
+                <ul>
+                    <li>Request the name of the wrong item.</li>
+                    <li>Ask for a photo of the item's barcode.</li>
+                    <li>Request a photo of the printed bill and the label on the bags received.</li>
+                    <li>Check if the barcode matches the item ordered on the dashboard. If the barcode is incorrect, it indicates a picker error. In case of description errors, inform the Catalogue team to correct it.</li>
+                </ul>
+            </li>
+            <li><strong>For Damaged Items:</strong>
+                <ul>
+                    <li>Ask the customer to provide a clear photo of the damaged item.</li>
+                    <li>Verify the damage with the store to determine if it occurred during handling or after delivery. If replacements are available, arrange a replacement; otherwise, arrange a return and refund.</li>
+                </ul>
+            </li>
+            <li><strong>For Near Expiry Items:</strong>
+                <ul>
+                    <li>Request a photo of the item's expiry date.</li>
+                    <li><strong>Agreed Policy:</strong>
+                        <ul>
+                            <li>Items valid for more than two weeks are not considered near expiry.</li>
+                            <li>Fresh items may require special handling depending on the specific case.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Raising Requests for Return, Replacement, or Missing Items</strong>
+        <ul>
+            <li>Use the Reverse Logistics request in the Sendbird widget.</li>
+            <li>Follow up with Kissflow for store responses and take the necessary action.</li>
+        </ul>
+    </li>
+    <li><strong>SLA Compliance</strong>
+        <ul>
+            <li>The Dark Store team has specific Service Level Agreements (SLAs) for each case type. Adhere to these SLAs to ensure timely responses and resolutions.</li>
+        </ul>
+    </li>
+</ol>
+
+<h2>5. Dark Store Escalation Types and SLAs</h2>
+<ul>
+    <li><strong>Missing Items:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Order Label image, Missing Item details, Wrong Item received image.</li>
+            <li>SLA: 180 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Damaged Items:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Order Label image, Damaged Item image.</li>
+            <li>SLA: 60 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Wrong Items:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Order Label image, Wrong Item received image, Barcode Image.</li>
+            <li>SLA: 180 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Near-Expiry Items:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Order Label image, Expiry date product image.</li>
+            <li>SLA: 60 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Fruits & Vegetables (F&V) Quality Issues:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Image of rotten/fungus/crushed/bad quality product.</li>
+            <li>SLA: 60 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>F&V Origin Issues:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Image of Item barcode/labels/stickers attached to the item.</li>
+            <li>SLA: 180 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Temperature Issues (for fresh items):</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, Item pictures showing melting, oozing, color change, etc.</li>
+            <li>SLA: 60 minutes.</li>
+        </ul>
+    </li>
+    <li><strong>Late Delivery:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name.</li>
+            <li>SLA: Immediate.</li>
+        </ul>
+    </li>
+    <li><strong>Customer Location/Phone Number Update:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, complete address, and new contact details.</li>
+            <li>SLA: Immediate.</li>
+        </ul>
+    </li>
+    <li><strong>Urgent Delivery Requests:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, and request details.</li>
+            <li>SLA: Immediate.</li>
+        </ul>
+    </li>
+    <li><strong>Driver Issues:</strong>
+        <ul>
+            <li>Gather: Order ID, Store Name, and details of the customer issue with the driver.</li>
+            <li>SLA: Immediate.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>6. Important Notes</h2>
+<ul>
+    <li>Ensure that no escalation is duplicated or raised prematurely.</li>
+    <li>Before raising an escalation, ensure all required information is collected to avoid delays.</li>
+    <li>If an issue exceeds the agreed SLA, take the appropriate action as per the specific case.</li>
+</ul>
+
+<h2>7. Version Control</h2>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support Manager</li>
+</ul>
+
+<p>This SOP ensures smooth coordination between the CS and Dark Store teams, with clear protocols for handling customer complaints and escalations effectively.</p>
 
 `
 
