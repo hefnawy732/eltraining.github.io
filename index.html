@@ -494,11 +494,11 @@ img.img-fluid {
     position: fixed; /* Fixed positioning for overlay */
     top: 0;
     left: 0;
-    width: 45vw;
-    height: 82vh;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
     background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
     display: none; /* Initially hidden */
-    z-index: 1; /* Below the image */
+    z-index: 0; /* Below the image */
     pointer-events: none; /* Allow clicks to pass through */
 }
 
